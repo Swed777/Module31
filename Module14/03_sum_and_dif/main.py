@@ -11,7 +11,7 @@ def quantity(number):
     while number > 0:
         i = number % 10
         number //= 10
-        sum += 1  # количество это +1
+        sum += 1
     print('Количество цифр в числе: ', sum)
     return (sum)
 
