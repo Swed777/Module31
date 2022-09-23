@@ -18,4 +18,4 @@ def quantity(number):
 number = int(input("Введите целое число: "))
 print('Разность суммы и количества цифр:', summ_unit(number) - quantity(number))
 
-print('----------------------------------')
+print('-----------------------------------')
