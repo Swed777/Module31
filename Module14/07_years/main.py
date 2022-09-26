@@ -14,3 +14,4 @@ for x in range(year_min, year_max):
     if one == two == three or two == three == four or one == three == four or one == two == four:
         print(x)
 
+# зачтено
