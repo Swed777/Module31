@@ -11,7 +11,6 @@ for i in range(people):
     leg_size = int(input(f'Размер ноги {i + 1}-го человека: '))
     people_list.append(leg_size)
 
-print(skates_list, people_list)
+result= list(set(skates_list) & set(people_list))       # Находим пересечение двух списков
 
-people_quantity = 0
-print('\nНаибольшее кол-во людей, которые могут взять ролики: ', people_quantity)
+print('\nНаибольшее кол-во людей, которые могут взять ролики: ', len(result))
