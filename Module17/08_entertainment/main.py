@@ -18,3 +18,5 @@ for i in range(throws):
         row[j] = '.'
 
 print('Результат: ', *row, sep='')
+
+# зачтено

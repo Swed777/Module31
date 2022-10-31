@@ -6,3 +6,5 @@ vowels = [i_letter for i_letter in text if i_letter in etalon_vowels]
 
 print('Список гласных букв: ', vowels)
 print('Длина списка:        ', len(vowels))
+
+# зачтено
