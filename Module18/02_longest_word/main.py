@@ -1,20 +1,22 @@
 # TODO здесь писать код
 
 text = input("Введите строку: ")
+max_word = max([word for word in text.split()])
+max_word_long = max([len(word) for word in text.split()])
 
-max_word = max([len(word) for word in text.split()])
-print(max_word)
-
-print('Самое длинное слово: ', 'Длина этого слова: ',{max_word})
+print('Самое длинное слово: {0} \nДлина этого слова: {1}'.format(max_word, max_word_long))
 
 # ***********************
-sentense = "какое-либо предложение"
-words = dict()
-for word in sentense.split(" "):
-      words[len(word)] = word
-
-biggestWord = words[max(words)]
-print(biggestWord)
-
-
-# print(" ".join(text.split()))
+'''
+text = input('Введите строку: ').split()
+max_len = 0
+max_word = ''
+ 
+for word in text:
+    if len(word) > max_len:
+        max_len = len(word)
+        max_word = word
+ 
+print('Самое длинное слово:', max_word)
+print('Длина этого слова:', max_len)
+'''
