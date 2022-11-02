@@ -14,7 +14,9 @@ for elem in text:               # Находим список повторяющ
         last_elem = elem
 result.append(temp)
 
+for i in range(len(result)):
+    print(len(result[i]), result[i][0])
+
 print(temp, len(temp), temp[0])
-print(result, len(result))
 
 # [temp.append(elem) if elem == last_elem for elem in text]
