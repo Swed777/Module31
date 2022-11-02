@@ -1,7 +1,7 @@
 # TODO здесь писать код
 
 text = input('Введите строку: ')
-
+final = []
 result, temp = [], []
 last_elem = text[0]
 
@@ -15,8 +15,10 @@ for elem in text:               # Находим список повторяющ
 result.append(temp)
 
 for i in range(len(result)):
-    print(len(result[i]), result[i][0])
+    final.append(result[i][0])
+    final.append(str(len(result[i])))
 
-print(temp, len(temp), temp[0])
+print('Закодированная строка:', ''.join(final))
+
 
 # [temp.append(elem) if elem == last_elem for elem in text]
