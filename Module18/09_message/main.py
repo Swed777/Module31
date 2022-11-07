@@ -1,7 +1,8 @@
 # TODO здесь писать код
 
 text = input('Сообщение: ')
+print('Новое сообщение: ')
 
-for i in text.split():
-    new_text = text[::-1]
-    print('Новое сообщение: ', new_text)
+for word in text.split():
+    new_text = word[::-1]
+    print(new_text, end=' ')
