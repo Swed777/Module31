@@ -11,5 +11,8 @@ def control(file):
     else:
         print("Файл назван верно")
 
+
 name = input('Название файла: ')
 control(name)
+
+# зачтено

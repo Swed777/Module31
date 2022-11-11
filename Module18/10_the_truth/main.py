@@ -10,6 +10,7 @@ def decryption(messenge):
             translated += i_word
     return translated
 
+
 def shift(text, key):
     word_ln = len(text)
     shift = key % word_ln
@@ -49,3 +50,5 @@ text_2 = text_2.replace('"', "!")
 text_2 = text_2.replace("/", ".\n")
 
 print(text_2)
+
+# зачтено
