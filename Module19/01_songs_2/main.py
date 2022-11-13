@@ -11,3 +11,13 @@ violator_songs = {
 }
 
 # TODO здесь писать код
+
+quantity = int(input('Сколько песен выбрать?: '))
+name_1 = input('Название первой песни: ')
+name_2 = input('Название второй песни: ')
+name_3 = input('Название третьей песни: ')
+
+
+total_time = ()
+
+print(f'Общее время звучания {quantity} песен: {total_time} минуты')
