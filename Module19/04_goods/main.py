@@ -25,3 +25,27 @@ store = {
 }
 
 # TODO здесь писать код
+
+for key in goods:
+    quantity, summa = 0, 0
+    for subject in store[goods[key]]:
+        quantity += subject['quantity']
+        summa += subject['price'] * subject['quantity']
+    print(f'{key} - {quantity} штук, стоимость {summa} рублей')
+
+
+'''
+КОд уже работает. Нужно привести к красивому виду
+
+for key in goods:
+    # print(key, goods.get(key))
+    # print(key, goods[key])
+    # print(key, store[goods.get(key)])
+    print(key)
+    # print(store[goods[key]])
+    quantity, summa = 0, 0
+    for subject in store[goods[key]]:
+        quantity += subject['quantity']
+        summa += subject['price'] * subject['quantity']
+    print(quantity, summa)
+'''
