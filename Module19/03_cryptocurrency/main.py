@@ -54,11 +54,11 @@ print('   Выводим только значения:            ', data.value
 
 print('---------------------------------------------------')
 data["ETH"]["total_diff"] = 100                                  # Добавляем ключ “total_diff” со значением 100
-print('2. Выполнененое задание № 2:          ', data["ETH"])
+print('2. Выполнененое задание № 2:           ', data["ETH"])
 
 print('---------------------------------------------------')
 data["tokens"][0]["fst_token_info"]["name"] = "doge"
-print('3. Выполненное задание  № 3:          ', data["tokens"][0]["fst_token_info"])   # Внутри “fst_token_info” значение ключа “name” поменять с “fdf” на “doge”.
+print('3. Выполненное задание  № 3:           ', data["tokens"][0]["fst_token_info"])   # Внутри “fst_token_info” значение ключа “name” поменять с “fdf” на “doge”.
 
 print('---------------------------------------------------')
     # Удалить “total_out” из tokens и присвоить его значение в “total_out” внутри “ETH”.
@@ -68,8 +68,8 @@ print('---------------------------------------------------')
     # Получается - условие некорректно прописано?
 data["ETH"]["total_out"] = data["tokens"][0].pop("total_out")
 data["tokens"][1].pop("total_out")
-print('4а. Выполненное задание № 4:          ', data["tokens"][0])
-print('4б. Выполненное задание № 4:          ', data["ETH"])
+print('4а. Выполненное задание № 4:           ', data["tokens"][0])
+print('4б. Выполненное задание № 4:           ', data["ETH"])
 
 print('---------------------------------------------------')
 data["tokens"][1]["sec_token_info"]["total_price"] = data["tokens"][1]["sec_token_info"].pop("price")  # Внутри "sec_token_info" изменить название ключа “price” на “total_price”.
