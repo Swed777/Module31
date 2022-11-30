@@ -1,5 +1,36 @@
 # TODO здесь писать код
 
+def forvard(text):
+    print('------------------------')
+    print('Оригинальный словарь частот: ')
+    frequency = {}
+    for symbol in text:
+            if symbol in frequency:
+                frequency[symbol] += 1
+            else:
+                frequency[symbol] = 1
+    [print(letter, ':', freq) for letter, freq in frequency.items()]
+    return frequency
+
+def invert(frequency):
+    print('------------------------')
+    print('Инвертированный словарь частот: ')
+    inverse = {}
+    for key in frequency:
+            val = frequency[key]
+            if val not in inverse:
+                inverse[val] = [key]
+            else:
+                inverse[val].append(key)
+    [print(i, ':', inverse[i]) for i in inverse ]
+
+
+text = input("Введите текст: ")
+frequency = forvard(text)
+invert(frequency)
+
+
+
 # Задача 3. Гистограмма частоты
 
 # Лингвистам нужно собрать данные о частоте букв в тексте, исходя из этих данных будет строиться гистограмма частоты букв.
@@ -24,35 +55,14 @@
 # ч : 1
 # ь : 1
 # Максимальная частота: 3
+'''
+Задача 5. Гистограмма частоты 2
+Что нужно сделать
 
-text = input("Введите текст: ")
-# def forvard(text):
-print('Оригинальный словарь частот: ')
-frequency = {}
-for symbol in text:
-        if symbol in frequency:
-            frequency[symbol] += 1
-        else:
-            frequency[symbol] = 1
+Мы уже писали программу для лингвистов, которая получала на вход текст и считала, сколько раз в строке 
+встречается каждый символ. Теперь задача немного поменялась: максимальную частоту выводить не нужно, 
+однако необходимо написать функцию, которая будет инвертировать полученный словарь. 
+То есть в качестве ключа будет частота, а в качестве значения — список символов с этой частотой.
+ Реализуйте такую программу.
 
-for letter, freq in frequency.items():
-        print(letter, ':', freq)
-
-print("Максимальная частота: ", max(frequency.values()))
-    # print("Максимальная частота: ", max(frequency.values()))
-
-# def invert(frequency):
-print('Инвертированный словарь частот: ')
-inverse = dict()
-for key in frequency:
-        val = frequency[key]
-        if val not in inverse:
-            inverse[val] = [key]
-        else:
-            inverse[val].append(key)
-        print(inverse)
-    # return inverse
-
-# text = input("Введите текст: ")
-# frequency = forvard(text)
-# invert(frequency)
+'''
