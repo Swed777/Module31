@@ -11,24 +11,17 @@ print(list(synonim.items()))
 
 while True:
     word = input('Введите слово: ').lower().strip()
-    if word not in list(synonim.items()):
-        print('Такого слова в словаре нет')
     for key, value in synonim.items():
-        if word == key:
-             print('Синоним: ', value)
-        elif word == value:
-             print('Синоним: ', key)
+             if word == key:
+                print('Синоним: ', value)
+                break
+             elif word == value:
+                print('Синоним: ', key)
+                break
+    else:
+                print('Такого слова в словаре нет')
 
 
-    # for key, value in synonim.items():
-    #     if word == key:
-    #         print('Синоним: ', value)
-    #     elif word == value:
-    #         print('Синоним: ', key)
-    # else:
-    #     print('Такого слова в словаре нет')
-
-#
 # Задача 6. Словарь синонимов
 # Что нужно сделать
 #
