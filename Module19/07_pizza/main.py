@@ -6,9 +6,27 @@ order = {}
 
 for i in range(number):                      # Формируем словарь из количества заказов
     order = input(f'{i+1}-й заказ: ').split()
-    # order[::-1] = int()
-    order_list[order[0].strip()] = order[1:]
-    print(order_list)
+    # order_list[order[0].strip()] = order[1:]
+    fio, pizza, number = order
+    # print(order)
+    # print(fio)
+
+    if fio not in order_list:
+        order_list[fio] = {pizza: number}
+        # print(order_list)
+    else:
+        if pizza not in order_list[fio]:
+            order_list[fio][pizza] = [number]
+        else:
+            order_list[fio][pizza] += [number]
+
+    # if order_list[order[0]] not in order_list:
+    #     order_list[order[0]] = order[0:]
+    # elif order_list[order[1]] not in order[1:]:
+    #     order_list[0][1] = order_list[2]
+    # else:
+    #     order_list[0][1] += order_list[2]
+print(order_list)
 
 '''
 Задача 7. Пицца
