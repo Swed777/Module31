@@ -7,7 +7,6 @@ for i in range(number):                     # Формируем список и
     order = input(f'{i+1}-й заказ: ').split()
     fio, pizza, number = order
     number = int(number)
-    print(order)
 
     if fio not in order_list:               # Преобразуем список в словарь. ключ- это фамилия, значение - словарь из названия пиццы и ее количества
         order_list[fio] = {pizza: number}
@@ -20,6 +19,8 @@ for i in range(number):                     # Формируем список и
 for key, volue in sorted(order_list.items()):
     print(key, ':')
     print('     ', volue)
+
+# ****** Никита - немного запутался с выводом результата - так, как в задании, не соображу. Подскажите направление плз
 
 '''
 Задача 7. Пицца
