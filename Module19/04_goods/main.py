@@ -32,3 +32,5 @@ for key in goods:
         quantity += subject['quantity']
         summa += subject['price'] * subject['quantity']
     print(f'{key} - {quantity} штук, стоимость {summa} рублей')
+
+# зачтено

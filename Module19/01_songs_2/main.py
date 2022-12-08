@@ -18,3 +18,5 @@ for i in range(1, quantity + 1):
     total_time = violator_songs.get(song)
 
 print(f'Общее время звучания {quantity} песен: {total_time} минуты')
+
+# зачтено
