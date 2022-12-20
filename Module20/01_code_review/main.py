@@ -42,3 +42,20 @@ l = f(students)[1]
 print(my_lst, l)
 
 # TODO исправить код
+print('------------------------------------------------')
+
+# def func(dict):
+
+
+list_age = []
+id_student = tuple
+"""for key, value in students.items():
+    id_student = key, value['age']
+    list_age.append(id_student)
+print('Список пар "ID студента — возраст":', list_age)"""
+
+
+list_age = [list_age.append((key, value['age']) for key, value in students.items())]
+
+print('Список пар "ID студента — возраст":', list_age)
+
