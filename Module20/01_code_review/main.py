@@ -1,3 +1,10 @@
+def func(students):
+    list_all = []
+    list_interests = [value['interests'] for key, value in students.items()]   # Формируем три списка  с интересами
+    [list_all.extend(i) for i in list_interests]                                # Преобразуем три списка с интересами в один
+    long = [value['surname'] for key, value in students.items()]                # формируем список из фамилий
+    return list_all, long
+
 students = {
     1: {
         'name': 'Bob',
@@ -20,7 +27,7 @@ students = {
 }
 
 
-def f(dict):
+"""def f(dict):
     lst = []
     string = ''
     for i in dict:
@@ -39,11 +46,13 @@ for i in students:
 
 my_lst = f(students)[0]
 l = f(students)[1]
-print(my_lst, l)
+print(my_lst, l)"""
 
 # TODO исправить код
 print('------------------------------------------------')
 
-# def func(dict):
-
 print('Список пар "ID студента — возраст":', [(key, value['age']) for key, value in students.items()])
+
+print('Полный список интересов:            ', set(func(students)[0]))
+
+print('Общая длина всех фамилий студентов: ', sum([len(i) for i in func(students)[1]]))
