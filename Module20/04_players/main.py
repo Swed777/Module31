@@ -6,8 +6,11 @@ players = {
 
 # TODO здесь писать код
 
-
-
+print(players.items())
+for i in players.items():
+    tup = i[0] + i[1]
+    print(i)
+    print(tup)
 
 
 
