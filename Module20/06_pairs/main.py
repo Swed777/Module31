@@ -1,21 +1,24 @@
 # TODO здесь писать код
+def rand_l():
+    rand_list = []
+    for i in range(10):
+        rand_list.append(random.randint(0, 9))  # randint()	Возвращает случайное число в пределах заданного промежутка
+    print('Оригинальный лист: ', rand_list)
+    list_1, list_2 = rand_list[::2], rand_list[1::2]   # ФОрмируем списки из нечетных и четных позиций
+    return list_1, list_2
+
+def pair_l(list_1, list_2):
+    new_list = []
+    for pair in zip(list_1, list_2):
+        new_list.append(pair)
+    return new_list
 
 import random       #randint()	Возвращает случайное число в пределах заданного промежутка
 
-rand_list=[]
-for i in range(10):
-    rand_list.append(random.randint(0,9))   #randint()	Возвращает случайное число в пределах заданного промежутка
-print(rand_list)
-list_1 = rand_list[::2]
-list_2 = rand_list[1::2]
-print(list_1)
-print(list_2)
+list_1, list_2 = rand_l()
+print('Новый список:      ', pair_l(list_1, list_2))
 
-new_list = []
-for pair in zip(list_1, list_2):
-    print(pair)
-    new_list.append(pair)
-    print(new_list)
+
 
 
 
