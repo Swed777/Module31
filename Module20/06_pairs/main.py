@@ -11,8 +11,12 @@ list_2 = rand_list[1::2]
 print(list_1)
 print(list_2)
 
+new_list = []
 for pair in zip(list_1, list_2):
     print(pair)
+    new_list.append(pair)
+    print(new_list)
+
 
 
 '''
