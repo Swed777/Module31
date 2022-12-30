@@ -6,8 +6,13 @@ rand_list=[]
 for i in range(10):
     rand_list.append(random.randint(0,9))   #randint()	Возвращает случайное число в пределах заданного промежутка
 print(rand_list)
+list_1 = rand_list[::2]
+list_2 = rand_list[1::2]
+print(list_1)
+print(list_2)
 
-
+for pair in zip(list_1, list_2):
+    print(pair)
 
 
 '''
