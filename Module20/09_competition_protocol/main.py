@@ -1,5 +1,16 @@
 # TODO здесь писать код
 
+score_nick_lst = list()
+
+number = int(input('Сколько записей вносится в протокол? '))
+
+print('Записи (результат и имя):')
+for i in range(number):      # формируем список из кортежей, в каждом из которых нулевой элемент - целое число
+    score_nick = input(f'{i+1}-я запись:').split()
+    score_nick[0] = int(score_nick[0])
+    score_nick_lst.append(tuple(score_nick))
+print(score_nick_lst)
+
 
 pass
 
