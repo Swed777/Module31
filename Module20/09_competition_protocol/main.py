@@ -2,17 +2,30 @@
 
 score_nick_lst = list()
 
-number = int(input('Сколько записей вносится в протокол? '))
-
+number = int(input('Сколько записей вносится в протокол? \n'))
 print('Записи (результат и имя):')
 for i in range(number):      # формируем список из кортежей, в каждом из которых нулевой элемент - целое число
     score_nick = input(f'{i+1}-я запись:').split()
     score_nick[0] = int(score_nick[0])
     score_nick_lst.append(tuple(score_nick))
+print(score_nick_lst)      # ---->>> удалить после отладки
+
+score_nick_lst = sorted(score_nick_lst, reverse=True)
 print(score_nick_lst)
 
 
-pass
+print('Результаты соревнований: \n-----------------------')
+
+max_score = 0
+max_nick = ''
+for i in range(3):
+    for score, value in enumerate(score_nick_lst):
+        if max_score < score:
+            max_score = score
+            max_nick = value
+print(f'{i+1}-e место. {max_nick[1]} {max_nick[0]}')
+
+
 
 
 '''
