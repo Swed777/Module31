@@ -11,7 +11,7 @@ for i in range(number):      # формируем список из кортеж
 
 print('Результаты соревнований: \n-----------------------')
 
-score_nick_lst = sorted(score_nick_lst, reverse=True)
+score_nick_lst = sorted(score_nick_lst, reverse=True)       #Сортируем по убыванию список
 for i in range(3):
     print(f'{i+1}-e место. {score_nick_lst[i][1]} ({score_nick_lst[i][0]})')
 
