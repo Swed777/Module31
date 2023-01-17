@@ -1,9 +1,10 @@
 def func(students):
     list_all = []
-    list_interests = [value['interests'] for key, value in students.items()]    # Формируем три списка  с интересами
-    [list_all.extend(i) for i in list_interests]                                # Преобразуем три списка с интересами в один
-    long = [value['surname'] for key, value in students.items()]                # формируем список из фамилий
+    list_interests = [value['interests'] for key, value in students.items()]  # Формируем три списка  с интересами
+    [list_all.extend(i) for i in list_interests]  # Преобразуем три списка с интересами в один
+    long = [value['surname'] for key, value in students.items()]  # формируем список из фамилий
     return list_all, long
+
 
 students = {
     1: {
@@ -25,8 +26,6 @@ students = {
         'interests': ['languages', 'health food']
     }
 }
-
-
 
 '''
 Исходный код:
@@ -53,7 +52,6 @@ l = f(students)[1]
 print(my_lst, l)
 '''
 
-
 # TODO исправить код
 print('------------------------------------------------')
 
@@ -63,4 +61,4 @@ print('Полный список интересов:            ', set(func(stud
 
 print('Общая длина всех фамилий студентов: ', sum([len(i) for i in func(students)[1]]))
 
-#  ****** Никита - посмотрите плз - не перемудрил ли я с функцией? Может - можно было ее как-то сократить в объеме кода?
+# зачтено
