@@ -7,7 +7,7 @@ def pr_num(i, num):
         print(i)
         pr_num(i + 1, num)
 
-num = int(input('Введите num: '))
+num = int(input('Введите num:  '))
 i = 1
 pr_num(i, num)
 
