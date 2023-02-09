@@ -1,16 +1,18 @@
 # TODO здесь писать код
 
-def search_element(data, tag):
+def search_key(data, key, depth = None, level = 1):
     result = None
-    if tag in data:
-        return data[tag]
-    for key, value in data.items():
-        if isinstance(value, dict):
-            result = search_element(value, tag)
-            if result:
-                return result
-    return result
 
+    if depth and depth < level:
+        return result
+    if key in data:
+        return data[key]
+    for i_teg in data.values():
+        if isinstance(i_teg, dict):
+            result = search_key(i_teg, key, depth, level = level + 1)
+            if result:
+                break
+    return result
 
 site = {
     'html': {
@@ -25,21 +27,14 @@ site = {
     }
 }
 
-search_key = input("Введите искомый ключ: ")
+key = input('Введите искомый ключ: ')
 level = input('Хотите ввести максимальную глубину? Y/N: ').lower()
 if level == 'y':
-    deph = int(input('Введите максимальную глубину: '))
-    print()
-if level == 'n':
-    print()
+    depth = int(input('Введите максимальную глубину: '))
+elif level == 'n':
+    depth = None
 
-
-value = search_element(site, search_key)
-if value:
-    print("Значение ключа:", value)
-else:
-    print("Такого ключа в структуре сайта нет.")
-
+print('Значение ключа:', search_key(data = site, depth = depth, key = key))
 
 
 
