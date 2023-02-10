@@ -7,7 +7,6 @@ def new_sites(data, name):
             print("{0} : {1}".format(k, v))
         return name
 
-
 site = {
     'html': {
         'head': {
