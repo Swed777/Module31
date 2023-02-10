@@ -4,7 +4,7 @@ def search_key(data, key, depth = None, level = 1):
     result = None
 
     if depth and depth < level:
-        return result
+        return None
     if key in data:
         return data[key]
     for i_teg in data.values():
