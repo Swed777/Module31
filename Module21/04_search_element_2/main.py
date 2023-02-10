@@ -34,7 +34,7 @@ if level == 'y':
 elif level == 'n':
     depth = None
 
-print('Значение ключа:', search_key(data = site, depth = depth, key = key))
+print('Значение ключа: ', search_key(data = site, depth = depth, key = key))
 
 
 
