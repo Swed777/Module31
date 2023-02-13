@@ -1,16 +1,20 @@
 # TODO здесь писать код
-def new_sites(data, name):
-    for k, v in data.items():
-        if isinstance(v, dict):
-            new_sites(v, name)
-        else:
-            print("{0} : {1}".format(k, v))
-        return name
+def find_key(struct, key, meaning):
+    if key in struct:
+        struct[key] = meaning
+        return site
+
+    for sub_struct in struct.values():
+        if isinstance(sub_struct, dict):
+            result = find_key(sub_struct, key, meaning)
+            if result:
+                return site
+
 
 site = {
     'html': {
         'head': {
-            'title': 'Куплю/продам недорого'
+            'title': 'Куплю/продам телефон недорого'
         },
         'body': {
             'h2': 'У нас самая низкая цена на iphone',
@@ -20,11 +24,16 @@ site = {
     }
 }
 
-number_site = int(input('Сколько сайтов: '))
-for i in range(number_site):
-    product = input('Введите название продукта для нового сайта: ')
-    new_sites(site, product)
 
+number_sites = int(input('Сколько сайтов: '))
+for _ in range(number_sites):
+    product_name = input('Введите название продукта для нового сайта: ')
+    key = {'title': f'Куплю/продам {product_name} недорого', 'h2': f'У нас самая низкая цена на {product_name}'}
+    for i in key:
+        find_key(site, i, key[i])
+
+    print(f'Сайт для {product_name}:')
+    print(site, '\n')
 
 
 '''
