@@ -1,6 +1,6 @@
 # TODO здесь писать код
 
-def search_key(data, key, depth = None, level = 1):
+def search_key(data, key, depth=None, level=1):
     result = None
 
     if depth and depth < level:
@@ -9,10 +9,11 @@ def search_key(data, key, depth = None, level = 1):
         return data[key]
     for i_teg in data.values():
         if isinstance(i_teg, dict):
-            result = search_key(i_teg, key, depth, level = level + 1)
+            result = search_key(i_teg, key, depth, level=level + 1)
             if result:
                 break
     return result
+
 
 site = {
     'html': {
@@ -34,38 +35,6 @@ if level == 'y':
 elif level == 'n':
     depth = None
 
-print('Значение ключа: ', search_key(data = site, depth = depth, key = key))
+print('Значение ключа: ', search_key(data=site, depth=depth, key=key))
 
-
-
-
-'''
-Задача 4. Поиск элемента 2
-Что нужно сделать
-Пользователь вводит искомый ключ. Если он хочет, то может ввести максимальную глубину — уровень, до которого будет просматриваться структура.
-Напишите функцию, которая находит заданный пользователем ключ в словаре и выдаёт значение этого ключа на экран. По умолчанию уровень не задан. В качестве примера можно использовать такой словарь:
-
-site = {
-    'html': {
-        'head': {
-            'title': 'Мой сайт'
-        },
-        'body': {
-            'h2': 'Здесь будет мой заголовок',
-            'div': 'Тут, наверное, какой-то блок',
-            'p': 'А вот здесь новый абзац'
-        }
-    }
-}
-
-Пример 1:
-Введите искомый ключ: head
-Хотите ввести максимальную глубину? Y/N: n
-Значение ключа: {'title': 'Мой сайт'}
-
-Пример 2:
-Введите искомый ключ: head
-Хотите ввести максимальную глубину? Y/N: y
-Введите максимальную глубину: 1
-Значение ключа: None
-'''
+# зачтено
