@@ -1,4 +1,10 @@
 # TODO здесь писать код
+import os
+
+path = os.path.abspath('zen.txt')
+print(path)
+file = open('zen.txt', 'r')
+# text_of_file = file.readlines()
 
 
 pass
