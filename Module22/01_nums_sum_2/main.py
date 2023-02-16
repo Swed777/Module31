@@ -7,7 +7,6 @@ array = tuple()
 for i_line in file:
     num_line = tuple(i_line.split())
     array += num_line
-print(array)
 
 for i in array:
     sum += int(i)
