@@ -5,6 +5,7 @@ text_of_file = file.readlines()
 for i in text_of_file[::-1]:
     print(i)
 
+file.close()
 
 
 '''
