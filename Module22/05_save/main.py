@@ -8,18 +8,25 @@ if not os.path.exists(path_all):        # Проверка на существо
     print('Такого пути не существует')
 file_name = input('Введите имя файла: ')
 
-file_save = open(file_name, 'w', encoding="utf8") # открываем файл в режиме записи
-file_save.write(stroke)           # записываем строку в файл
-
-file_save.close()
-
 true_file = os.path.isfile(os.path.join(path_all, file_name))   # Проверяем наличие файла
 if true_file:
-    print('Файл успешно сохранен')
-
+    rewrite = input('Вы действительно хотите перезаписать файл? Да/Нет\n').lower()
+    if rewrite == 'да':
+        file_save = open(file_name, 'w', encoding="utf8")  # открываем файл в режиме записи
+        file_save.write(stroke)  # записываем строку в файл
+        file_save.close()
+        print('Файл успешно перезаписан\n')
+    else:
+        print('Начинаем сначала :)\n')
+else:
+    file_save = open(file_name, 'w', encoding="utf8")  # открываем файл в режиме записи
+    file_save.write(stroke)  # записываем строку в файл
+    file_save.close()
+    print('Файл успешно сохранен\n')
 
 file_read = open(file_name, 'r')
 print('Содержимое файла: ', file_read.read())
+
 
 '''
 Задача 5. Сохранение
