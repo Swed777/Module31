@@ -37,7 +37,7 @@ print('Количество слов в файле:',   num_of_words)
 print('Количество строк в файле:',  num_of_stroke)
 for k, v in letters.items():  # если значение конкретного элемента словаря равно минимальному значению
     if v ==  min_nunber_letter:
-        print('Наиболее редкая буква: ',  k)
+        print('Наиболее редкая буква: ',    k)
 
 file.close()
 
