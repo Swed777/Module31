@@ -1,14 +1,15 @@
 # TODO здесь писать код
 import os
 
-#  Мой путь :  --->  Users ei desktop
+#  Мой путь :  --->  Users ei desktop Linux Python_basic Module22 Module22 05_save
 
-stroke = str(input('Введите строку: '))
-path_in = str(input('Куда хотите сохранить документ? Введите последовательность папок (через пробел):'))
-path_all = path_in.replace(' ', os.path.sep)
+stroke = input('Введите строку: ')
+path = input('Куда хотите сохранить документ? Введите последовательность папок (через пробел):').replace(' ', os.sep)  #replace заменяет все вхождения одной строки (пробелы) на другую - /
+path_all = os.path.join(os.sep, path) # добавляем разделитель / в начало пути в соответствии с текущей ОС
 
-if not os.path.exists(path_all):
+if not os.path.exists(path_all):        # Проверка на существование директории
     print('Такого пути не существует')
+print(path)
 print(path_all)
 
 file_name = input('Введите имя файла: ')
