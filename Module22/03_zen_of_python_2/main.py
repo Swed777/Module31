@@ -4,7 +4,7 @@ import os
 # Вариант открытия файла по абсолютному пути
 # file = open('/Users/ei/Desktop/Linux/Python_basic/Module22/Module22/02_zen_of_python/zen.txt', 'r')
 
-file = open(os.path.join('..', '02_zen_of_python' , 'zen.txt'), 'r') # Открытие файла чере относительный путь
+file = open(os.path.join('..', '02_zen_of_python' , 'zen.txt'), 'r') # Открытие файла через относительный путь
 text_of_file = file.readlines()
 num_of_sumbol = 0
 num_of_words = 0
