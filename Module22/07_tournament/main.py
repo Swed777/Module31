@@ -1,8 +1,29 @@
 # TODO здесь писать код
 
+count_user = 0
 with open('first_tour.txt', 'r') as open_file:
     text = open_file.readlines()
-    print(text[0])
+    min_level = text[0]
+    count_us = (int(i_level.split()[2]) for i_level in text[1::] if i_level.split()[2] > min_level)  # см внизу обычный цикл
+    # count_us = (int(i_level.split()[2]) for i_level in text[1::] if i_level.split()[2] > min_level)  # см внизу обычный цикл
+    numbers = len(list(count_us))
+    print(numbers)
+    with open('second_tour.txt', 'w') as open_file:
+        open_file.write(str(numbers))
+
+
+    # print(text[0])
+
+
+
+
+
+    # ЗАготовка для генератора
+    # for i_level in text[1::]:
+    #     if i_level.split()[2] > min_level:
+    #         count_user += 1
+    # print(count_user)
+
 
 
 
