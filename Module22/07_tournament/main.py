@@ -1,29 +1,38 @@
 # TODO здесь писать код
 
-count_user = 0
 with open('first_tour.txt', 'r') as open_file:
     text = open_file.readlines()
     min_level = text[0]
-    count_us = (int(i_level.split()[2]) for i_level in text[1::] if i_level.split()[2] > min_level)  # см внизу обычный цикл
-    # count_us = (int(i_level.split()[2]) for i_level in text[1::] if i_level.split()[2] > min_level)  # см внизу обычный цикл
-    numbers = len(list(count_us))
-    print(numbers)
-    with open('second_tour.txt', 'w') as open_file:
-        open_file.write(str(numbers))
+    count_us = (i_level for i_level in text[1::] if i_level.split()[2] > min_level) # см внизу обычный цикл
+    lider_list = list(count_us)
+
+print(lider_list)
+spisok = []
+for i,num in enumerate(lider_list):
+    spisok.append(lider_list[i].split()[0])
+    print(lider_list[i].split()[2])
+print(spisok)
 
 
-    # print(text[0])
+    # with open('second_tour.txt', 'a') as open_file:
+    #     open_file.write(str(len(lider_list)))
+    #     for i_num, i_lider in enumerate(lider_list):
+    #         print(i_lider)
+    #         open_file.write(str(i_num+1))
+    #         open_file.write(i_lider)
 
 
+    # print(len(lider_list),'\n', lider_list, '\n', lider_list[1].split()[2])
 
 
+    # numbers = len(list(count_us))
 
-    # ЗАготовка для генератора
-    # for i_level in text[1::]:
-    #     if i_level.split()[2] > min_level:
-    #         count_user += 1
-    # print(count_user)
 
+# with open('second_tour.txt', 'a') as open_file:
+#             open_file.write(str(number_of_rating))
+#             open_file.write(i_level)
+#
+# print(f'\nКоличество лидеров {count_liders}, \nСписок пользователей: \n{text[1][0]}.')
 
 
 
@@ -47,3 +56,33 @@ Vasiliev Maxim 78
 2
 1) V. Petrov 98
 2) P. Sergeev 92'''
+
+
+
+'''
+with open('first_tour.txt', 'r') as open_file:
+    text = open_file.readlines()
+    min_level = text[0]
+    count_us = (i_level.split()[2] for i_level in text[1::] if i_level.split()[2] > min_level)  # см внизу обычный цикл
+    numbers = len(list(count_us))
+    with open('second_tour.txt', 'w') as open_file:
+        open_file.write(str(numbers))
+
+
+
+    # ЗАготовка для генератора
+count_user = 0
+with open('first_tour.txt', 'r') as open_file:
+    text = open_file.readlines()
+    min_level = text[0]
+for i_level in text[1::]:
+    print(i_level) #убрать
+    if i_level.split()[2] > min_level:
+        count_user += 1
+
+    with open('second_tour.txt', 'w') as open_file:
+        open_file.write(str(count_user))
+
+
+print(f'\nКоличество лидеров {count_user}, \nСписок пользователей: \n{text[1][0]}.')
+'''
