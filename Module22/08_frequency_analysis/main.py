@@ -1,21 +1,28 @@
 # TODO здесь писать код
 
 import string
-
+# Справочно:
 # znak = string.punctuation           # punctuation  представляет строку со знаками пунктуации
 # symb = string.whitespace            # whitespace содержит непечатакемые символы
+
 alfa = string.ascii_lowercase
+count_letter = 0
 dict_text = {}
+
 with open('text.txt', 'r') as open_file:
     text = open_file.readlines()
     for i_word in text:
-        for i_letter in i_word:
-            print(i_letter)
+        for i_letter in i_word.lower():
             if i_letter in alfa:
                 x = dict_text.get(i_letter, 0)
                 dict_text[i_letter] = x + 1
+                count_letter += 1
 
-print(dict_text)
+print('Кличество английских букв: ', count_letter)
+dict_text_sorted = sorted(dict_text.items(), key=lambda x: x[1], reverse=True)
+print(dict_text_sorted)
+for i in dict_text_sorted:
+    print(i)
 
 
 
