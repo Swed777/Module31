@@ -1,40 +1,24 @@
 # TODO здесь писать код
 
 with open('first_tour.txt', 'r') as open_file:
-    text = open_file.readlines()
-    min_level = text[0]
-    count_us = (i_level for i_level in text[1::] if i_level.split()[2] > min_level) # см внизу обычный цикл
+    text = open_file.readlines()    #Открываем файл построчно
+    min_level = text[0]             # определяем минимальный проходной балл
+    count_us = (i_level for i_level in text[1::] if i_level.split()[2] > min_level) # формируем список из проходящих во второй тур по минимальному баллу (см.цикл ниже)
     lider_list = list(count_us)
 
-print(lider_list)
-spisok = []
-for i,num in enumerate(lider_list):
-    spisok.append(lider_list[i].split()[0])
-    print(lider_list[i].split()[2])
-print(spisok)
+with open('second_tour.txt', 'a') as open_file:
+    open_file.write(str(len(lider_list)))   # Запиываем в 1 строку количество участников второго этапа
+    open_file.close()
 
+spisok_sort = []
+for i,num in enumerate(lider_list):         # формируем список списков участников второго этапа и сортируем его по убываню очков
+    spisok_sort.append(lider_list[i].split())
+    spisok_sort.sort(key=lambda x: x[2], reverse=True)   # Сортировать по третьему элементу (баллам)
 
-    # with open('second_tour.txt', 'a') as open_file:
-    #     open_file.write(str(len(lider_list)))
-    #     for i_num, i_lider in enumerate(lider_list):
-    #         print(i_lider)
-    #         open_file.write(str(i_num+1))
-    #         open_file.write(i_lider)
-
-
-    # print(len(lider_list),'\n', lider_list, '\n', lider_list[1].split()[2])
-
-
-    # numbers = len(list(count_us))
-
-
-# with open('second_tour.txt', 'a') as open_file:
-#             open_file.write(str(number_of_rating))
-#             open_file.write(i_level)
-#
-# print(f'\nКоличество лидеров {count_liders}, \nСписок пользователей: \n{text[1][0]}.')
-
-
+for i, num in enumerate(spisok_sort):
+        out_text = (f'\n{i + 1}) {num[1][0]}. {num[0]} {num[2]} ')
+        with open('second_tour.txt', 'a') as open_file:
+            open_file.write(out_text)
 
 
 '''

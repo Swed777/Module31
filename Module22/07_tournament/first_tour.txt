@@ -3,4 +3,4 @@ Ivanov Serg 80
 Segeev Petr 94
 Petrov Vasiliy 92
 Vasiliev Maxim 78
-Иванов Иван 99
+Иванов Иван 98
