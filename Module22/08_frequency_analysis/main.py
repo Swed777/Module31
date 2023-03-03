@@ -3,7 +3,7 @@
 import string
 # Справочно:
 # znak = string.punctuation           # punctuation  представляет строку со знаками пунктуации
-# symb = string.whitespace            # whitespace содержит непечатакемые символы
+# symb = string.whitespace            # whitespace содержит непечатаемые символы
 
 alfa = string.ascii_lowercase
 count_letter = 0
@@ -19,10 +19,11 @@ with open('text.txt', 'r') as open_file:
                 count_letter += 1
 
 print('Кличество английских букв: ', count_letter)
-dict_text_sorted = sorted(dict_text.items(), key=lambda x: x[1], reverse=True)
+dict_text_sorted = sorted(dict_text.items(), key=lambda x: (x[1]), reverse=True)
+# dict_text_sorted = [v[0] for v in sorted(dict_text.items(), key=lambda(k,v): (v,k))]   не работает
 print(dict_text_sorted)
 for i in dict_text_sorted:
-    print(i)
+    print(f'{i[0]} {i[1] / count_letter:.3f}')      # округляем до 3 знаков
 
 
 
