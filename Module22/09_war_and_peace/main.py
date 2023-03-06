@@ -8,7 +8,7 @@ v_i_m = zipfile.ZipFile('voyna-i-mir.zip')
 vim = v_i_m.open('voyna-i-mir.txt', 'r').readlines()
 
 for i_word in vim:
-        for i_letter in i_word.decode():
+        for i_letter in i_word.decode():      # decode() преобразует байты в строку Python.
             if i_letter in alpha:
                 x = dict_text.get(i_letter, 0)
                 dict_text[i_letter] = x + 1
