@@ -1,6 +1,7 @@
 # TODO здесь писать код
 
 import string
+
 # Справочно, для знаний:
 # znak = string.punctuation           # punctuation  представляет строку со знаками пунктуации
 # symb = string.whitespace            # whitespace содержит непечатаемые символы
@@ -20,27 +21,9 @@ with open('text.txt', 'r') as open_file:
 dict_text_sorted = sorted(dict_text.items(), key=lambda x: (x[1]), reverse=True)
 
 for i in dict_text_sorted:
-    dict_text_sort = (f'{i[0]} {i[1] / count_letter:.3f}')      # округляем до 3 знаков
+    dict_text_sort = (f'{i[0]} {i[1] / count_letter:.3f}')  # округляем до 3 знаков
     with open('analysis.txt', 'a') as open_analis:
         open_analis.write(str(dict_text_sort) + '\n')
 open_analis.close()
 
-
-'''
-Задача 8. Частотный анализ
-Что нужно сделать
-Есть файл text.txt, который содержит текст. Напишите программу, которая выполняет частотный анализ, определяя долю каждой буквы английского алфавита в общем количестве английских букв в тексте, и выводит результат в файл analysis.txt. Символы, не являющиеся буквами английского алфавита, учитывать не нужно. 
-В файл analysis.txt выводится доля каждой буквы, встречающейся в тексте, с тремя знаками в дробной части. Буквы должны быть отсортированы по убыванию их доли. Буквы с равной долей должны следовать в алфавитном порядке.
-
-Пример:
-Содержимое файла text.txt:
-Mama myla ramu.
-
-Содержимое файла analysis.txt:
-a 0.333
-m 0.333
-l 0.083
-r 0.083
-u 0.083
-y 0.083
-'''
+# зачтено
