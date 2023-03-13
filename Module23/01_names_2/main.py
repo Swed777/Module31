@@ -1,7 +1,7 @@
 # TODO здесь писать код
-def check_len(string, number_line):
+def check_len(line, number_line):
     try:
-        if len(string) < 3:
+        if len(line) < 3:
             raise Exception
     except Exception:
         print(f'Ошибка: Менее трёх символов в строке: -> {number_line}')
