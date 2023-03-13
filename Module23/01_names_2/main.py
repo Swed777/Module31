@@ -2,7 +2,7 @@
 def check_len(line, number_line):
     try:
         if len(line) < 3:
-            raise Exception
+            raise Exception    #Вызываем исключение
     except Exception:
         print(f'Ошибка: Менее трёх символов в строке: -> {number_line}')
         with open('errors.log', 'a') as error_file:
