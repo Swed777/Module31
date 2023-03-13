@@ -7,7 +7,7 @@ def validata(i_line, count_string):
         name, post, age = client[0], client[1], client[2]  # Множественное присваивание элементам строки
     except (IndexError):
         result = False
-        bad_logfile.write(f'В строке нр {count_string}: --> {i_line} <-- отсутствует одновременно ТРИ поля \n')
+        bad_logfile.write(f'\nВ строке нр {count_string}: --> {i_line.strip()} <-- отсутствует одновременно ТРИ поля')
     return result
 
 count_string = 0 # счетчик всех строк в файле
