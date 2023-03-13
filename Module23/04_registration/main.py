@@ -10,7 +10,6 @@ def validata(i_line, count_string):
         bad_logfile.write(f'В строке нр {count_string}: --> {i_line} <-- отсутствует одновременно ТРИ поля \n')
     return result
 
-
 count_string = 0 # счетчик всех строк в файле
 
 # Открываем исходный файл и два файла с логами
