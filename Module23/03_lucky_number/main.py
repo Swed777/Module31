@@ -17,7 +17,6 @@ border_number = 777
 sum_number = 0
 out_file = 'out_file.txt'
 
-
 while True:
     number = int(input('Введите число: '))
     if random_13():
