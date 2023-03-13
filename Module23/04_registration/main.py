@@ -5,7 +5,7 @@ def validata(i_line, count_string):
     try:
         client = i_line.split()  # разбиваем строку по признаку "Пробел"
         name, post, age = client[0], client[1], client[2]  # Множественное присваивание элементам строки
-    except (IndexError):
+    except (IndexError, NameError, SyntaxError, ValueError):
         result = False
         bad_logfile.write(f'\nВ строке нр {count_string}: --> {i_line.strip()} <-- отсутствует одновременно ТРИ поля')
     return result
