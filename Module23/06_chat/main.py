@@ -1,15 +1,26 @@
 # TODO здесь писать код
+import colorama
+from colorama import init, Fore, Back, Style
+
 
 while True:
-    name = input('Введите Ваше имя: ')
-    print(f'Привет, {name}! Что ты хочешь? \n1. Посмотреть текущий текст чата  \n2. Отправить сообщение')
+    colorama.init()
+    name = input(Fore.LIGHTBLUE_EX + '\nВведите Ваше имя: ')
+    print(Fore.LIGHTBLUE_EX + f'Привет, {name}! Что ты хочешь? \n1. Посмотреть текущий текст чата  \n2. Отправить сообщение  \n0. Завершить чат\n')
     number = int(input())
     if number == 1:
-        print('1')
+        with open('chat.txt', 'r', encoding='utf8') as open_chat:
+            print(Fore.WHITE)
+            for i_message in open_chat:
+                print(i_message, end='')
     if number == 2:
-        print('2')
+        message = input('Введите сообщение: ')
+        with open('chat.txt', 'a', encoding='utf8') as open_chat:
+            open_chat.write(f'{name}:  {message}\n')
+    if number == 0:
+        print(Fore.RED + Style.DIM + 'Чат завершен :(' )
+        break
 
-# ДОбвить файл с чатом, добавление в него сообщения и чтение всего файла
 
 '''
 Задача 4. Чат
