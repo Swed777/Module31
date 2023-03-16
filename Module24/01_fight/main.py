@@ -7,7 +7,6 @@ class Warrior:
         self.health = health
         self.power = power
 
-
     def __str__(self):
         return f'Игрок: {self.name} | Здоровье: {self.health}'
 
