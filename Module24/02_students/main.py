@@ -20,8 +20,8 @@ for _ in range(2):
     list_student.append(x)
 print('Список студентов: ')
 print(list_student)
-# for i_stud in list_student:
-    # print(i_stud)
+for i_stud in list_student:
+     print(i_stud)
 
 
 '''
