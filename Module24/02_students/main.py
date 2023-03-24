@@ -20,7 +20,6 @@ print(list_student.sort(key=lambda x: x[3]))
 
 
 
-
 '''
 Задача 2. Студенты
 Что нужно сделать
