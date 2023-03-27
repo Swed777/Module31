@@ -1,18 +1,29 @@
 # TODO здесь писать код
 class Parent:
+    'Класс для описания родителей'
     name = ''
     age = 0
     list_of_chld = []
 
+    def print_info(self):
+        print('Имя: {}\n Возраст: {}\n Список детей: {}\n'.format(self.name, self.age, self.list_of_chld))
 
 class Children:
+    'Класс для описания детей'
     name = ''
     age = 0
-    status_relax = 0
-    status_hunger = 0
+    status_relax = True
+    status_hunger = True
 
 
-pass
+def parnt():
+    Parent.name = input('Имя родителя: ')
+    Parent.age = int(input('Возраст родителя: '))
+    Parent.list_of_chld = ()
+
+Parent.print_info()
+
+
 '''
 Задача 3. Отцы, матери и дети
 Что нужно сделать
