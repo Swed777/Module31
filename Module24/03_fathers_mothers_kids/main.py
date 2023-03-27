@@ -1,9 +1,13 @@
 # TODO здесь писать код
 class Parent:
     'Класс для описания родителей'
-    name = ''
-    age = 0
-    list_of_chld = []
+    # name = ''
+    # age = 0
+    # list_of_chld = []
+    def __init__(self, name, age, lst_chld):
+        self.name = name
+        self.age = age
+        self.list_of_chld = lst_chld
 
     def add_cldrn(self, children):
         self.list_of_chld.append(children)
@@ -23,13 +27,17 @@ def parnt():
     Parent.name = input('Имя родителя: ')
     Parent.age = int(input('Возраст родителя: '))
     Parent.list_of_chld = ()
+#
+# parent1 = Parent()
+# parent1.print_info()
+#
+# parent1.add_cldrn('Mary')
+# parent1.add_cldrn('Jonny')
+# parent1.print_info()
 
-parent1 = Parent()
-parent1.print_info()
-
-parent1.add_cldrn('Mary')
-parent1.add_cldrn('Jonny')
-parent1.print_info()
+# spisok = ['nadya', 'vera']
+Father = Parent('Kolya', 35, ['nadya', 'vera'])
+Father.print_info()
 
 '''
 Задача 3. Отцы, матери и дети
