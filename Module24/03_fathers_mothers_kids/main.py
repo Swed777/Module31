@@ -5,6 +5,9 @@ class Parent:
     age = 0
     list_of_chld = []
 
+    def add_cldrn(self, children):
+        self.list_of_chld.append(children)
+
     def print_info(self):
         print('Имя: {}\n Возраст: {}\n Список детей: {}\n'.format(self.name, self.age, self.list_of_chld))
 
@@ -21,8 +24,12 @@ def parnt():
     Parent.age = int(input('Возраст родителя: '))
     Parent.list_of_chld = ()
 
-Parent.print_info()
+parent1 = Parent()
+parent1.print_info()
 
+parent1.add_cldrn('Mary')
+parent1.add_cldrn('Jonny')
+parent1.print_info()
 
 '''
 Задача 3. Отцы, матери и дети
