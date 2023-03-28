@@ -24,6 +24,8 @@ class Children:
     def print_info(self):
         print(' Имя: {}\n Возраст: {}\n Спокоен?: {}\n Голоден?: {}\n'.format(self.name, self.age, self.status_relax, self.status_hunger))
 
+    def get_status(self):
+        return (self.name, self.age, self.status_relax, self.status_hunger)
 
 def parnt():
     Parent.name = input('Имя родителя: ')
@@ -34,7 +36,8 @@ son = Children('Andry', 5, randint(0,1), randint(0,1))
 dother = Children('Mary', 7, randint(0,1), randint(0,1))
 son.print_info()
 
-Father = Parent('Anatoliy Ivanovich', 35, [son, dother])
+# Father = Parent('Anatoliy Ivanovich', 35, [son.__dict__, dother.__dict__])
+Father = Parent('Anatoliy Ivanovich', 35, [son.get_status(), dother.get_status()])
 Father.print_info()
 
 
