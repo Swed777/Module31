@@ -1,43 +1,43 @@
 # TODO здесь писать код
+from random import randint
 class Parent:
     'Класс для описания родителей'
-    # name = ''
-    # age = 0
-    # list_of_chld = []
     def __init__(self, name, age, lst_chld):
         self.name = name
         self.age = age
         self.list_of_chld = lst_chld
-
-    def add_cldrn(self, children):
-        self.list_of_chld.append(children)
+    #
+    # def add_cldrn(self, children):
+    #     self.list_of_chld.append(children)
 
     def print_info(self):
-        print('Имя: {}\n Возраст: {}\n Список детей: {}\n'.format(self.name, self.age, self.list_of_chld))
+        print(' Имя: {}\n Возраст: {}\n Список детей: {}\n'.format(self.name, self.age, self.list_of_chld))
 
 class Children:
     'Класс для описания детей'
-    name = ''
-    age = 0
-    status_relax = True
-    status_hunger = True
+    def __init__(self, name, age, status_relax, status_hunger):
+        self.name = name
+        self.age = age
+        self.status_relax = status_relax
+        self.status_hunger = status_hunger
+
+    def print_info(self):
+        print(' Имя: {}\n Возраст: {}\n Спокоен?: {}\n Голоден?: {}\n'.format(self.name, self.age, self.status_relax, self.status_hunger))
 
 
 def parnt():
     Parent.name = input('Имя родителя: ')
     Parent.age = int(input('Возраст родителя: '))
     Parent.list_of_chld = ()
-#
-# parent1 = Parent()
-# parent1.print_info()
-#
-# parent1.add_cldrn('Mary')
-# parent1.add_cldrn('Jonny')
-# parent1.print_info()
 
-# spisok = ['nadya', 'vera']
-Father = Parent('Kolya', 35, ['nadya', 'vera'])
+son = Children('Andry', 5, randint(0,1), randint(0,1))
+dother = Children('Mary', 7, randint(0,1), randint(0,1))
+son.print_info()
+
+Father = Parent('Anatoliy Ivanovich', 35, [son, dother])
 Father.print_info()
+
+
 
 '''
 Задача 3. Отцы, матери и дети
