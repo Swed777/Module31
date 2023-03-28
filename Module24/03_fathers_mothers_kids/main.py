@@ -34,11 +34,13 @@ def parnt():
 
 son = Children('Andry', 5, randint(0,1), randint(0,1))
 dother = Children('Mary', 7, randint(0,1), randint(0,1))
-son.print_info()
+# son.print_info()
 
 # Father = Parent('Anatoliy Ivanovich', 35, [son.__dict__, dother.__dict__])
 Father = Parent('Anatoliy Ivanovich', 35, [son.get_status(), dother.get_status()])
 Father.print_info()
+son.print_info()
+dother.print_info()
 
 
 
