@@ -16,5 +16,13 @@ class Clock:
     def __get_formatted(cls, x):
             return str(x).rjust(2, "0")
 
+    def __add__(self, other):
+        if not isinstance(other, int):
+            raise ArithmeticError("Правый операнд должен быть типом int")
+
+        return Clock(self.seconds + other)
+
 c1 = Clock(1000)
-print(c1.get_time())
+c2 = Clock(2000)
+c3 = c1 + c2
+print(c3.get_time())

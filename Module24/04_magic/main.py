@@ -7,9 +7,20 @@ class Fire
 
 class Earth:
 
+class Storm:
+
+class Steam:
+
+class Dirt:
+
+class Lighting:
+
+class Dust:
+
+class Lava:
 
 
-    pass
+pass
 
 '''
 Задача 4. Магия
