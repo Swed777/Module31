@@ -1,24 +1,24 @@
 # TODO здесь писать код
 class Water:
-
+    name = 'Вода'
 class Air:
-
+    name = 'Воздух'
 class Fire
-
+    name = 'Огонь'
 class Earth:
-
+    name = 'Земля'
 class Storm:
-
+    name = 'Шторм'
 class Steam:
-
+    name = 'Пар'
 class Dirt:
-
+    name = 'Грязь'
 class Lighting:
-
+    name = 'Молния'
 class Dust:
-
+    name = 'Пыль'
 class Lava:
-
+    name = 'Лава'
 
 pass
 
