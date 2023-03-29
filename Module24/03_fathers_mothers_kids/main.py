@@ -6,12 +6,9 @@ class Parent:
         self.name = name
         self.age = age
         self.list_of_chld = lst_chld
-    #
-    # def add_cldrn(self, children):
-    #     self.list_of_chld.append(children)
 
     def print_info(self):
-        print(' Имя: {}\n Возраст: {}\n Список детей: {}\n'.format(self.name, self.age, self.list_of_chld))
+        print(' Меня зовут: {}\n Мне: {}  лет\n У меня есть дети: {}\n'.format(self.name, self.age, self.list_of_chld))
 
 class Children:
     'Класс для описания детей'
@@ -27,26 +24,28 @@ class Children:
     def get_status(self):
         return (self.name, self.age, self.status_relax, self.status_hunger)
 
-def parnt():
-    Parent.name = input('Имя родителя: ')
-    Parent.age = int(input('Возраст родителя: '))
-    Parent.list_of_chld = ()
-
 son = Children('Andry', 5, randint(0,1), randint(0,1))
 dother = Children('Mary', 7, randint(0,1), randint(0,1))
-# son.print_info()
 
 # Father = Parent('Anatoliy Ivanovich', 35, [son.__dict__, dother.__dict__])
-Father = Parent('Anatoliy Ivanovich', 35, [son.get_status(), dother.get_status()])
+Father = Parent('Anatoliy Ivanovich', 35, (son.get_status()[0], dother.get_status()[0]))
 Father.print_info()
 son.print_info()
 dother.print_info()
 
+if son.get_status()[2] == 0:
+    print(Father.name, 'идет успокаивать', son.name)
+if son.get_status()[3] == 0:
+    print(Father.name, 'идет кормить', son.name)
+if dother.get_status()[2] == 0:
+    print(Father.name, 'идет успокаивать', dother.name)
+if dother.get_status()[3] == 0:
+    print(Father.name, 'идет кормить', dother.name)
 
 
 '''
 Задача 3. Отцы, матери и дети
-Что нужно сделать
+Что нужно сделать, 
 Реализуйте два класса: «Родитель» и «Ребёнок». 
 
 У родителя есть:
