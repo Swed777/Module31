@@ -1,28 +1,58 @@
-class Clock:
-    __DAY = 86400  # число секунд в одном дне
+from random import randint, choice
 
-    def __init__(self, seconds: int):
-        if not isinstance(seconds, int):
-            raise TypeError("Секунды должны быть целым числом")
-        self.seconds = seconds % self.__DAY
 
-    def get_time(self):
-            s = self.seconds % 60  # секунды
-            m = (self.seconds // 60) % 60  # минуты
-            h = (self.seconds // 3600) % 24  # часы
-            return f"{self.__get_formatted(h)}:{self.__get_formatted(m)}:{self.__get_formatted(s)}"
+class House:
+    food = 50
+    money = 0
 
-    @classmethod
-    def __get_formatted(cls, x):
-            return str(x).rjust(2, "0")
 
-    def __add__(self, other):
-        if not isinstance(other, int):
-            raise ArithmeticError("Правый операнд должен быть типом int")
+class Person:
 
-        return Clock(self.seconds + other)
+    def __init__(self, name):
+        self.name = name
+        self.satiety = 50
 
-c1 = Clock(1000)
-c2 = Clock(2000)
-c3 = c1 + c2
-print(c3.get_time())
+    def eat(self):  # ест
+        self.satiety += 1
+        House.food -= 1
+        return f'ест, сытость {self.satiety} еда {House.food}'
+
+    def work(self):  # работает
+        self.satiety -= 1
+        House.money += 1
+        return f'работает, сытость {self.satiety} деньги {House.money}'
+
+    def play(self):  # играет
+        self.satiety -= 1
+        return f'играет, сытость {self.satiety}'
+
+    def repast(self):  # идет в магазин
+        House.food += 1
+        House.money -= 1
+        return f'идет в магазин, еда {House.food} деньги {House.money}'
+
+
+person_1 = Person('Вася')
+person_2 = Person('Федя')
+
+for i in range(365):  # пробуем прожить год
+    number_cubes = randint(1, 6)
+    person = choice([person_1, person_2])  # рандомно выбираем персону
+    if person.satiety < 0:  # голоден - умер. завершаем эксперимент
+        print(f'К сожалению, {person.name} помер с голоду ')
+        break
+    if person.satiety < 20 and House.food >= 10:
+        text = person.eat()
+    elif House.food < 10:
+        text = person.repast()
+    elif House.money < 50:
+        text = person.work()
+    elif number_cubes == 1:
+        text = person.work()
+    elif number_cubes == 2:
+        text = person.eat()
+    else:
+        text = person.play()
+    print(person.name, text)
+
+print('выжили' if i == 364 else 'все плохо')
