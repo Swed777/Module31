@@ -29,26 +29,34 @@ class People:
 
 
 Artem = People('Артем')
-info = ''
+Katya = People('Катя')
+info_A = ''
+info_K = ''
+
 for i_day in range(1, 366):
     if Artem.satiety < 0:
         print(f'К сожалению, {Artem.name} не дожил до конца эксперимента )')
         break
+    if Katya.satiety < 0:
+        print(f'К сожалению, {Katya.name} не дожила до конца эксперимента )')
+        break
     cub = random.randint(1,6)
-    if Artem.satiety < 20:
-        info = Artem.eat()
+    if Artem.satiety < 20 or Katya.satiety < 20:
+        info_A = Artem.eat()
+        info_K = Katya.eat()
     elif House.food_icebox < 10:
-        info = Artem.market()
+        info_A = Artem.market()
     elif House.money_box < 50:
-        info = Artem.work()
+        info_K = Katya.work()
     elif cub == 1:
-        info = Artem.work()
+        info_K = Katya.work()
     elif cub == 2:
-        info = Artem.eat()
+        info_A = Artem.eat()
     else:
-        info = Artem.play()
+        info_A = Artem.play()
+        info_K = Katya.play()
 
-    print(f'День {i_day}: {info}, кубик ={cub}')
+    print(f'День {i_day}: \n{Artem.name} {info_A} \n{Katya.name} {info_K} \nкубик ={cub}')
     print(f'состояние дел: еда {House.food_icebox}, деньги {House.money_box}')
 print('**** Ура, выжил! **** ')
 
