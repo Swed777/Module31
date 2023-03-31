@@ -29,8 +29,6 @@ class People:
 
 
 Artem = People('Артем')
-market = People.market
-work = People.work
 info = ''
 for i_day in range(1, 366):
     if Artem.satiety < 0:
@@ -40,7 +38,7 @@ for i_day in range(1, 366):
     if Artem.satiety < 20:
         info = Artem.eat()
     elif House.food_icebox < 10:
-        info = People.market
+        info = Artem.market()
     elif House.money_box < 50:
         info = Artem.work()
     elif cub == 1:
