@@ -29,28 +29,30 @@ class People:
 
 
 Artem = People('Артем')
-eat = People.eat
 market = People.market
 work = People.work
 info = ''
 for i_day in range(1, 366):
+    if Artem.satiety < 0:
+        print(f'К сожалению, {Artem.name} не дожил до конца эксперимента )')
+        break
     cub = random.randint(1,6)
     if Artem.satiety < 20:
-        info = People.eat
+        info = Artem.eat()
     elif House.food_icebox < 10:
         info = People.market
     elif House.money_box < 50:
-        info = work
+        info = Artem.work()
     elif cub == 1:
-        info = work
+        info = Artem.work()
     elif cub == 2:
-        info = eat
+        info = Artem.eat()
     else:
-        info = People.play()
+        info = Artem.play()
 
     print(f'День {i_day}: {info}, кубик ={cub}')
     print(f'состояние дел: еда {House.food_icebox}, деньги {House.money_box}')
-
+print('**** Ура, выжил! **** ')
 
 '''
 Задача 5. Совместное проживание
