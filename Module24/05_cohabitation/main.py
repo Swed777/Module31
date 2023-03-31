@@ -58,7 +58,7 @@ for i_day in range(1, 366):
 
     print(f'День {i_day}: \n{Artem.name} {info_A} \n{Katya.name} {info_K} \nкубик ={cub}')
     print(f'состояние дел: еда {House.food_icebox}, деньги {House.money_box}')
-print('**** Ура, выжил! **** ')
+print('**** Ура, выжили! **** ')
 
 '''
 Задача 5. Совместное проживание
