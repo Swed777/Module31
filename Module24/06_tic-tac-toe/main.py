@@ -9,9 +9,12 @@ class Board:
             print((Fore.GREEN + '|'),self.board[0 + i_cell * 3], Fore.GREEN + '|', self.board[1 + i_cell * 3], Fore.GREEN + '|', self.board[2 + i_cell * 3], Fore.GREEN + '|')
             print(Fore.GREEN + '- ' * 7)
 
-    # def change_cell(self):
-    #
-    # def status_game(self):
+    # def change_cell(self, number_cell):
+
+    #return change_status
+
+    # def status_end_game(self):
+    # return status
 
 #
 # class Cell:
