@@ -1,5 +1,5 @@
 # TODO здесь писать код
-from colorama import init, Fore, Back
+from colorama import init, Fore
 init(autoreset=True)
 class Board:
     board = list(range(9))   # определяем общее состояние поля из 9 ячеек
