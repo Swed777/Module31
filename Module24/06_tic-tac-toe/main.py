@@ -6,7 +6,9 @@ class Board:
     def border(self):       # и выводим его на печать
         print(Fore.GREEN + '- ' * 7)
         for i_cell in range(3):
-            print((Fore.GREEN + '|'),self.board[0 + i_cell * 3], Fore.GREEN + '|', self.board[1 + i_cell * 3], Fore.GREEN + '|', self.board[2 + i_cell * 3], Fore.GREEN + '|')
+            print((Fore.GREEN + '|'), (Fore.LIGHTYELLOW_EX + str(self.board[0 + i_cell * 3])),
+                  Fore.GREEN + '|', (Fore.LIGHTYELLOW_EX + str(self.board[1 + i_cell * 3])),
+                  Fore.GREEN + '|', (Fore.LIGHTYELLOW_EX + str(self.board[2 + i_cell * 3])), Fore.GREEN + '|')
             print(Fore.GREEN + '- ' * 7)
 
     # def change_cell(self, number_cell):
