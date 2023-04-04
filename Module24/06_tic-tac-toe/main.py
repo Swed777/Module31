@@ -1,10 +1,24 @@
 # TODO здесь писать код
-
 class Board:
+    board = list(range(9))   # определяем общее состояние поля из 9 ячеек
+    def border(self):       # и выводим его на печать
+        print('-' * 13)
+        for i_cell in range(3):
+            print('|', self.board[0 + i_cell * 3], '|', self.board[1 + i_cell * 3], '|', self.board[2 + i_cell * 3],
+                  '|')
+        print('-' * 13)
+
+    def change_cell(self):
+
+    def status_game(self):
+
+
 class Cell:
 class Player:
 class Game:
 
+contur = Board()
+contur.border()
 
 
 
