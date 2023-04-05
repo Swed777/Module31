@@ -3,7 +3,7 @@ from colorama import init, Fore
 init(autoreset=True)
 class Board:
     board = list(range(9))   # определяем общее состояние поля из 9 ячеек
-    def border(self):       # и выводим его на печать
+    def border_field(self):       # и выводим его на печать
         print(Fore.GREEN + '- ' * 7)
         for i_cell in range(3):
             print((Fore.GREEN + '|'), (Fore.LIGHTYELLOW_EX + str(self.board[0 + i_cell * 3])),
@@ -11,20 +11,34 @@ class Board:
                   Fore.GREEN + '|', (Fore.LIGHTYELLOW_EX + str(self.board[2 + i_cell * 3])), Fore.GREEN + '|')
             print(Fore.GREEN + '- ' * 7)
 
-    # def change_cell(self, number_cell):
-
-    #return change_status
+    def change_cell(self, number_cell):
+        if number_cell != 'X'.lower() or number_cell != 'O'.lower():
+            number_cell =  777 # Добавить информацию о конкретном элементе Х или О
+            return True
+        else:return False
 
     # def status_end_game(self):
-    # return status
+    #     # status = (True if (клетки заполнены по 3 шт) else False)
+    #     return status
+
+    def victory_check(board):
+        victory_line = ((0, 1, 2), (3, 4, 5), (6, 7, 8),
+                        (0, 3, 6), (1, 4, 7), (2, 5, 8),
+                        (0, 4, 8), (2, 4, 6))
+        for i in victory_line:
+            if Board.board[i[0]] == Board.board[i[1]] == Board.board[i[2]]:  # Проверяем наличие одинаковых символов Х или О в выигрышных линиях
+                return True
+        return False
 
 #
 # class Cell:
 # class Player:
 # class Game:
 
+
 contur = Board()
-contur.border()
+contur.border_field()
+Board.victory_check(1)
 
 
 
