@@ -17,10 +17,6 @@ class Board:
             return True
         else:return False
 
-    # def status_end_game(self):
-    #     # status = (True if (клетки заполнены по 3 шт) else False)
-    #     return status
-
     def victory_check(board):
         victory_line = ((0, 1, 2), (3, 4, 5), (6, 7, 8),
                         (0, 3, 6), (1, 4, 7), (2, 5, 8),
