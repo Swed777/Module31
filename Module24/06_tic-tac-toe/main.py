@@ -25,13 +25,34 @@ class Board:
             if Board.board[i[0]] == Board.board[i[1]] == Board.board[i[2]]:  # Проверяем наличие одинаковых символов Х или О в выигрышных линиях
                 return True
         return False
-
 #
-# class Cell:
-# class Player:
+class Cell:
+    states = {0: ' ', 1: 'X', 2: 'O'}
+    def __init__(self, index):
+        self.index = int(index)
+        self.state = 0
+    def cell_status(self):
+        if self.state == 0:
+            print(f'Данная ячейка ->{self.index} свободна.')
+            return True
+        print(f'Данная ячейка ->{self.index} занята.')
+        return False
+class Player:
+ def __init__(self, name: str):
+        self.name = name
+        self.figure: Cell.states = 0
+        self.num_of_victory = 0
+        self.my_turn = False
+ def set_symbol(self, symbol):
+        if symbol == 'X':
+            self.figure = 1
+        else:
+            self.figure = 2
 # class Game:
 
 
+
+print('*****************')
 contur = Board()
 contur.border_field()
 Board.victory_check(1)
