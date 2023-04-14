@@ -1,5 +1,8 @@
 from colorama import init, Fore
+
 init(autoreset=True)
+
+
 class Cell:
     states = {0: ' ', 1: 'X', 2: 'O'}
 
@@ -133,3 +136,5 @@ while True:
         print('Я тогда поиграю за вас.')
     if not brd.battle:
         break
+
+# зачтено
