@@ -1,9 +1,9 @@
 # TODO здесь писать код
 class Property:
-"""
-Property: базовый класс, описывает имущество налогоплательщиков. Использует стоимость имущества и метод начисления налога
-attr: worth: стоимость имущества
-"""
+    """
+    Property: базовый класс, описывает имущество налогоплательщиков. Использует стоимость имущества и метод начисления налога
+    attr: worth: стоимость имущества
+    """
     def __init__(self, worth):
         self.__worth = self.set_worth(worth)
     def tax(self, quoter):
@@ -18,10 +18,18 @@ attr: worth: стоимость имущества
 
 
 class Apartment(Property):
+    def __init__(self, worth):
+        Property.__init__(self, worth)
+    def tax(self, tax):
+        return self.worth / 1000
 
 class Car(Property):
-
+    pass
 class CountryHouse(Property):
+    pass
+
+kvartira = Apartment(10000)
+print('Налог на квартиру: {}'.format(kvartira))
 
 
 '''
