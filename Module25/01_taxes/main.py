@@ -28,16 +28,19 @@ class CountryHouse(Property):
         t = self.tax(500)
         return t
 
-money = int(nput('Сколько у Вас денег на уплату налогов?'))
-price_a = int(input('Цена апартаментов:'))
-price_c = int(input('Цена машины:'))
-price_h = int(input('Цена дачи:'))
+money   = float(input('Сколько у Вас денег на уплату налогов?'))
+price_a = float(input('Цена апартаментов:'))
+price_c = float(input('Цена машины:'))
+price_h = float(input('Цена дачи:'))
+
 
 tax_list = [Apartment(price_a), Car(price_c), CountryHouse(price_h)]
 
+for i in tax_list:
+    print(i.name, i.tax_is())
 
-
-
+# sum_nalog = sum(i + i for i in tax_list)
+# print(sum_nalog)
 
 
 apart = Apartment(9500000)
