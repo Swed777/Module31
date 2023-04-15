@@ -10,11 +10,8 @@ class Property:
         return self.worth
     def tax(self, quoter):
         self.quoter = quoter
-        """
-        Property: Алгоритм расчета налога. Для разных видов имущества задается отдельно
-        """
+        """ Property: Алгоритм расчета налога. Для разных видов имущества задается отдельно в дочернем классе """
         return self.worth / self.quoter
-
 class Apartment(Property):
     name = 'Апартаменты'
     def tax_is(self):
@@ -34,10 +31,10 @@ class CountryHouse(Property):
 
 
 
-apart = Apartment(000000)
+apart = Apartment(9500000)
 print(apart.tax_is())
 
-auto = Car(1500000)
+auto = Car(1100000)
 print(auto.tax_is())
 
 thouse = CountryHouse(400000)
