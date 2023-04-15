@@ -33,24 +33,16 @@ price_a = float(input('Цена апартаментов:'))
 price_c = float(input('Цена машины:'))
 price_h = float(input('Цена дачи:'))
 
-
 tax_list = [Apartment(price_a), Car(price_c), CountryHouse(price_h)]
 
+sum_tax = 0
 for i in tax_list:
     print(i.name, i.tax_is())
+    sum_tax += i.tax_is()
+print('Общая сумма налога равна : ', sum_tax)
 
-# sum_nalog = sum(i + i for i in tax_list)
-# print(sum_nalog)
-
-
-apart = Apartment(9500000)
-print(apart.tax_is())
-
-auto = Car(1100000)
-print(auto.tax_is())
-
-thouse = CountryHouse(400000)
-print(thouse.tax_is())
+if sum_tax > money:
+    print('*****   Вам не хватит денег на налоги. Идите работать! *****')
 
 
 
