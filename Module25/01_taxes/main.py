@@ -5,32 +5,32 @@ class Property:
     attr: worth: стоимость имущества
     """
     def __init__(self, worth):
-        self.__worth = self.set_worth(worth)
-    def tax(self, quoter):
-        self.__quoter = quoter
-    def set_worth(self, worth):
-        if worth > 0:
-            return worth
-        else:
-            raise ValueError("Налог начисляется с имущества ненулевой стоимости")
+        # self.__worth = self.set_worth(worth)
+        self.__worth = worth
+    def tax(self):
+        return self.get_worth() * self.get_quoter()
+
+    def set_worth(self):
+        return self.__worth
     def get_worth(self):
         return self.__worth
 
 
 class Apartment(Property):
     def __init__(self, worth):
-        Property.__init__(self, worth)
-    def tax(self, tax):
-        return self.worth / 1000
+        Property.__init__(worth)
+    def tax(self):
+        self.quoter = 1000
+        return self.quoter
 
 class Car(Property):
     pass
 class CountryHouse(Property):
     pass
 
-kvartira = Apartment(10000)
-print('Налог на квартиру: {}'.format(kvartira))
-
+kvartira = Apartment(33)
+# print('Налог на квартиру: {}'.format(kvartira.tax))
+print(kvartira.tax())
 
 '''
 Задача 1. Налоги
@@ -45,4 +45,23 @@ print('Налог на квартиру: {}'.format(kvartira))
 Каждый дочерний класс должен иметь конструктор с одним параметром, передающий свой параметр конструктору базового класса.
 Разработайте интерфейс программы. Пусть она запрашивает у пользователя количество его денег и стоимость имущества, 
 а затем выдаёт налог на соответствующее имущество и показывает, сколько денег ему не хватает (если это так).
+
+********** Базовый старт
+class Property:
+    def __init__(self, worth):
+        self.__worth = worth
+
+    def get_worth(self):
+        return self.__worth
+
+    def set_worth(self):
+        return self.__worth
+
+    def tax(self, quoter):
+        return self.__worth / quoter
+
+kv = Property(5000000)
+print(kv.tax(1000))
+
+
 '''
