@@ -39,10 +39,10 @@ sum_tax = 0
 for i in tax_list:
     print(i.name, i.tax_is())
     sum_tax += i.tax_is()
-print('Общая сумма налога равна : ', sum_tax)
+print('\nОбщая сумма налога равна : ', sum_tax)
 
 if sum_tax > money:
-    print('*****   Вам не хватит денег на налоги. Идите работать! *****')
+    print(f'\n*****   Вам не хватит --> {abs(sum_tax - money)} <-- денег на налоги. Идите работать! *****')
 
 
 
