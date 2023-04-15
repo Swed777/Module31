@@ -28,6 +28,15 @@ class CountryHouse(Property):
         t = self.tax(500)
         return t
 
+money = int(nput('Сколько у Вас денег на уплату налогов?'))
+price_a = int(input('Цена апартаментов:'))
+price_c = int(input('Цена машины:'))
+price_h = int(input('Цена дачи:'))
+
+tax_list = [Apartment(price_a), Car(price_c), CountryHouse(price_h)]
+
+
+
 
 
 
