@@ -5,32 +5,37 @@ class Property:
     attr: worth: стоимость имущества
     """
     def __init__(self, worth):
-        # self.__worth = self.set_worth(worth)
         self.__worth = worth
-    def tax(self):
-        return self.get_worth() * self.get_quoter()
-
-    def set_worth(self):
-        return self.__worth
     def get_worth(self):
         return self.__worth
-
-
-class Apartment(Property):
+    def tax(self, quoter):
+        """
+        Property: Величина налога. Для разных видов имущества задается отдельно
+        """
+        return self.__worth / quoter
+class Apartment():
     def __init__(self, worth):
-        Property.__init__(worth)
-    def tax(self):
-        self.quoter = 1000
-        return self.quoter
+        self.__worth = worth
+        self.__quoter = 1000
 
-class Car(Property):
-    pass
-class CountryHouse(Property):
-    pass
+class Car():
+    def __init__(self, worth):
+        self.__worth = worth
+    def tax(self, quoter):
+        return self.__worth / quoter
+class CountryHouse():
+    def __init__(self, worth):
+        self.__worth = worth
+    def tax(self, quoter):
+        return self.__worth / quoter
 
-kvartira = Apartment(33)
-# print('Налог на квартиру: {}'.format(kvartira.tax))
-print(kvartira.tax())
+kv = Property(5000000)
+print(kv.tax(1000))
+kv1 = Property(33333)
+print(kv1.tax(1000))
+
+apart = Apartment(888888)
+print(apart)
 
 '''
 Задача 1. Налоги
