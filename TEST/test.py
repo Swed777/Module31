@@ -11,8 +11,8 @@ class Property:
 class Apartment():
     def __init__(self, worth):
         self.__worth = worth
-    def tax(self, quoter):
-        return self.__worth / quoter
+    def tax(self):
+        return self.__worth / 1000
 
 class Car():
     def __init__(self, worth):
@@ -34,4 +34,4 @@ kv1 = Property(33333)
 print(kv1.tax(1000))
 
 apart = Apartment(888888)
-print(apart.tax(200))
+print(apart.tax())

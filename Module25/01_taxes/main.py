@@ -5,37 +5,46 @@ class Property:
     attr: worth: стоимость имущества
     """
     def __init__(self, worth):
-        self.__worth = worth
+        self.worth = worth
     def get_worth(self):
-        return self.__worth
+        return self.worth
     def tax(self, quoter):
+        self.quoter = quoter
         """
-        Property: Величина налога. Для разных видов имущества задается отдельно
+        Property: Алгоритм расчета налога. Для разных видов имущества задается отдельно
         """
-        return self.__worth / quoter
-class Apartment():
-    def __init__(self, worth):
-        self.__worth = worth
-        self.__quoter = 1000
+        return self.worth / self.quoter
 
-class Car():
-    def __init__(self, worth):
-        self.__worth = worth
-    def tax(self, quoter):
-        return self.__worth / quoter
-class CountryHouse():
-    def __init__(self, worth):
-        self.__worth = worth
-    def tax(self, quoter):
-        return self.__worth / quoter
+class Apartment(Property):
+    name = 'Апартаменты'
+    def tax_is(self):
+        t =  self.tax(1000)
+        return t
+class Car(Property):
+    name = 'Автомобиль'
+    def tax_is(self):
+        t =  self.tax(200)
+        return t
+class CountryHouse(Property):
+    name = 'Дача'
+    def tax_is(self):
+        t = self.tax(500)
+        return t
 
-kv = Property(5000000)
-print(kv.tax(1000))
-kv1 = Property(33333)
-print(kv1.tax(1000))
 
-apart = Apartment(888888)
-print(apart)
+
+
+apart = Apartment(000000)
+print(apart.tax_is())
+
+auto = Car(1500000)
+print(auto.tax_is())
+
+thouse = CountryHouse(400000)
+print(thouse.tax_is())
+
+
+
 
 '''
 Задача 1. Налоги
@@ -67,6 +76,5 @@ class Property:
 
 kv = Property(5000000)
 print(kv.tax(1000))
-
 
 '''
