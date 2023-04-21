@@ -1,6 +1,5 @@
 import random
 
-
 class Hero:
     # Базовый класс, который не подлежит изменению
     # У каждого наследника будут атрибуты:
@@ -70,26 +69,41 @@ class Healer(Hero):
         super().__init__(name)
     # Атрибуты:
     # - магическая сила - равна значению НАЧАЛЬНОГО показателя силы умноженному на 3 (self.__power * 3)
-        self.magic_force = self.__power * 3
+        self.magic_force = self.get_power() * 3
 
     # Методы:
     # - атака - может атаковать врага, но атакует только в половину силы self.__power
     def attack(self, target):
-        target.take_damage(self.get_power() / 2)
+        target.take_damage(self.get_power() / 2)    # -->> ЕИ - напоминалка - проверить, будет ли работать без округения с Float
         raise NotImplementedError("Вы забыли переопределить метод Attack!")
 
     # - получение урона - т.к. защита целителя слаба - он получает на 20% больше урона (1.2 * damage)
-    def take_damage(self, power):
-        self.set_hp(self.get_hp() - power * (self.madness / 2))
-        if self.get_hp() < 50:
-            self.madness *= 2
-        super().take_damage(power)
+    def take_damage(self, damage):
+        super().take_damage(damage * 1.2)
 
     # - исцеление - увеличивает здоровье цели на величину равную своей магической силе
+    def heal(self, target):
+        target.set_hp(target.get_hp() + self.magic_force)
+
     # - выбор действия - получает на вход всех союзников и всех врагов и на основе своей стратегии выполняет ОДНО из действий (атака,
     # исцеление) на выбранную им цель
-
-
+    def make_a_move(self, friends, enemies):
+        print(self.name, end=' ')
+        target_of_potion = friends[0]
+        min_health = target_of_potion.get_hp()
+        for friend in friends:
+            if friend.get_hp() < min_health:
+                target_of_potion = friend
+                min_health = target_of_potion.get_hp()
+        if min_health < 60:
+            print('Провожу исцеление:', target_of_potion.name)
+            self.heal(target_of_potion)
+        else:
+            if not enemies:
+                return
+            print('Атакую противника:', enemies[0].name)
+            self.attack(enemies[0])
+        print('\n')
 class Tank(Hero):
     # Танк:
     # Атрибуты:
