@@ -62,7 +62,6 @@ class Hero:
         # Каждый наследник должен выводить информацию о своём состоянии, чтобы вы могли отслеживать ход сражения
         raise NotImplementedError("Вы забыли переопределить метод __str__!")
 
-
 class Healer(Hero):
     # Целитель:
     def __init__(self, name):
@@ -74,7 +73,7 @@ class Healer(Hero):
     # Методы:
     # - атака - может атаковать врага, но атакует только в половину силы self.__power
     def attack(self, target):
-        target.take_damage(self.get_power() / 2)    # -->> ЕИ - напоминалка - проверить, будет ли работать без округения с Float
+        target.take_damage(self.get_power() // 2)
         raise NotImplementedError("Вы забыли переопределить метод Attack!")
 
     # - получение урона - т.к. защита целителя слаба - он получает на 20% больше урона (1.2 * damage)
@@ -106,28 +105,96 @@ class Healer(Hero):
         print('\n')
 class Tank(Hero):
     # Танк:
+    def __init__(self, name):
+        super().__init__(name)
     # Атрибуты:
     # - показатель защиты - изначально равен 1, может увеличиваться и уменьшаться
+        self.defense = 1
     # - поднят ли щит - танк может поднимать щит, этот атрибут должен показывать поднят ли щит в данный момент
+        self.shield_status = False
+
     # Методы:
     # - атака - атакует, но т.к. доспехи очень тяжелые - наносит половину урона (self.__power)
+    def attack(self, target):
+        target.take_damage(self.get_power() // 2)
+
     # - получение урона - весь входящий урон делится на показатель защиты (damage/self.defense) и только потом отнимается от здоровья
+    def take_damage(self, damage):
+        self.set_hp(self.get_hp() - (damage / self.defense))
+
     # - поднять щит - если щит не поднят - поднимает щит. Это увеличивает показатель брони в 2 раза, но уменьшает показатель силы в 2 раза.
-    # - опустить щит - если щит поднят - опускает щит. Это уменьшает показатель брони в 2 раза, но увеличивает показатель силы в 2 раза.
+    def shield_up(self):
+        if not self.shield_status:
+            self.shield_status = True
+            self.defense *= 2
+            self.set_power(self.get_power() // 2)
+            print(f"{self.name} поднимает щит!")
+
+    # - опустить щит - если щит поднят - опускает щит. Это уменьшает показатель брони в 2 раза, но увеличивает показатель силы в 2 раза
+    def shield_down(self):
+        if self.shield_status:
+            self.shield_status = False
+            self.defense = self.defense // 2
+            self.set_power(self.get_power() * 2)
+            print(f"{self.name} опускает щит!")
+
     # - выбор действия - получает на вход всех союзников и всех врагов и на основе своей стратегии выполняет ОДНО из действий (атака,
     # поднять щит/опустить щит) на выбранную им цель
+    def make_a_move(self, friends, enemies):
+        print(self.name, end=' ')
+        if not enemies:
+            return
+        if self.get_hp() > 60:
+            self.shield_down()
+            print('Атакую: ', enemies[0].name)
+            self.attack(enemies[0])
+        else:
+            self.shield_up()
+            print('Атакую: ', enemies[0].name)
+            self.attack(enemies[0])
+        print('\n')
 
 
 class Attacker(Hero):
     # Убийца:
+    def __init__(self, name):
+        super().__init__(name)
+
     # Атрибуты:
     # - коэффициент усиления урона (входящего и исходящего)
+        self.__ampl_coeff = 1
+
     # Методы:
     # - атака - наносит урон равный показателю силы (self.__power) умноженному на коэффициент усиления урона (self.power_multiply)
-    # после нанесения урона - вызывается метод ослабления power_down.
+    # после нанесения урона - вызывается метод ослабления power_down
+    def attack(self, target):
+        target.take_damage(self.get_power() * self.__ampl_coeff)
+        self.power_down()
+
     # - получение урона - получает урон равный входящему урона умноженному на половину коэффициента усиления урона - damage * (
     # self.power_multiply / 2)
+    def take_damage(self, damage):
+        self.set_hp(self.get_hp() - (damage - (self.__ampl_coeff / 2)))
+
     # - усиление (power_up) - увеличивает коэффициента усиления урона в 2 раза
+    def power_up(self):
+        self.__ampl_coeff *= 2
+
     # - ослабление (power_down) - уменьшает коэффициента усиления урона в 2 раза
+    def power_down(self):
+        self.__ampl_coeff /= 2
+
     # - выбор действия - получает на вход всех союзников и всех врагов и на основе своей стратегии выполняет ОДНО из действий (атака,
     # усиление, ослабление) на выбранную им цель
+        def choose_action(self, allies, enemies):
+            if self.__health <= 0:
+                return
+            target = self.__find_weakest_enemy(enemies)
+            if target:
+                self.attack(target)
+            else:
+                target = self.__find_most_damaged_ally(allies)
+                if target:
+                    self.power_up()
+                    self.heal(target)
+                    self.power_down()
