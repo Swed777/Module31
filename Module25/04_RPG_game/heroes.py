@@ -1,4 +1,4 @@
-import random
+#import random
 
 class Hero:
     # Базовый класс, который не подлежит изменению
@@ -46,6 +46,7 @@ class Hero:
         # Каждый наследник будет наносить урон согласно правилам своего класса
         raise NotImplementedError("Вы забыли переопределить метод Attack!")
 
+
     def take_damage(self, damage):
         # Каждый наследник будет получать урон согласно правилам своего класса
         # При этом у всех наследников есть общая логика, которая определяет жив ли объект.
@@ -60,6 +61,7 @@ class Hero:
 
     def __str__(self):
         # Каждый наследник должен выводить информацию о своём состоянии, чтобы вы могли отслеживать ход сражения
+        return 'Разобраться с методом str в родительском классе'
         raise NotImplementedError("Вы забыли переопределить метод __str__!")
 
 class Healer(Hero):
@@ -70,11 +72,13 @@ class Healer(Hero):
     # - магическая сила - равна значению НАЧАЛЬНОГО показателя силы умноженному на 3 (self.__power * 3)
         self.magic_force = self.get_power() * 3
 
+    def __str__(self):
+        return 'Доработать описание классов героев'
     # Методы:
     # - атака - может атаковать врага, но атакует только в половину силы self.__power
     def attack(self, target):
-        target.take_damage(self.get_power() // 2)
-        raise NotImplementedError("Вы забыли переопределить метод Attack!")
+        target.take_damage(self.get_power() / 2)
+  #      raise NotImplementedError("Вы забыли переопределить метод Attack!")
 
     # - получение урона - т.к. защита целителя слаба - он получает на 20% больше урона (1.2 * damage)
     def take_damage(self, damage):
