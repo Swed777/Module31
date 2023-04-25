@@ -10,12 +10,10 @@ class Stack:
             return None
         return self.items.pop(index)
 
-
 class TaskManager:
 
     def new_task(self, task, priority):
         pass
-
 
 manager = TaskManager()
 manager.new_task("сделать уборку", 4)
