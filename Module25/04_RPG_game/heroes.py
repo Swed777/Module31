@@ -61,7 +61,7 @@ class Hero:
 
     def __str__(self):
         # Каждый наследник должен выводить информацию о своём состоянии, чтобы вы могли отслеживать ход сражения
-        return 'Разобраться с методом str в родительском классе'
+        return 'Name: {0} | HP: {1}'.format(self.name, self.get_hp())
         raise NotImplementedError("Вы забыли переопределить метод __str__!")
 
 class Healer(Hero):
@@ -72,8 +72,6 @@ class Healer(Hero):
     # - магическая сила - равна значению НАЧАЛЬНОГО показателя силы умноженному на 3 (self.__power * 3)
         self.magic_force = self.get_power() * 3
 
-    def __str__(self):
-        return 'Доработать описание классов героев'
     # Методы:
     # - атака - может атаковать врага, но атакует только в половину силы self.__power
     def attack(self, target):
