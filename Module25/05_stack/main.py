@@ -3,7 +3,7 @@
 class Stack:
     def __init__(self):
         self.items = []
-    def add_elem(self, item):
+    def add_elem(self, item : list):
         self.items.append(item)
 
     def pop(self, index: int = -1):
@@ -16,21 +16,17 @@ class Stack:
 
 class TaskManager:
     def __init__(self, task : str, priority = 0):
-    # def new_task(self, task : str, priority : int):
-        self.task = {'task':priority}
+        self.task = ('task', priority)
     def __str__(self):
         return f'Задача: {self.task}, Приоритет: {self.priority}'
 
-
-'''
-manager.new_task("сделать уборку", 4)
-manager.new_task("помыть посуду", 4)
-manager.new_task("отдохнуть", 1)
-manager.new_task("поесть", 2)
-manager.new_task("сдать ДЗ", 2)
-'''
 st = Stack()
-st.add_elem({'Сделать уборку':5})
+st.add_elem(("сделать уборку", 4))
+st.add_elem(("помыть посуду", 4))
+st.add_elem(("отдохнуть", 1))
+st.add_elem(("поесть", 2))
+st.add_elem(("сдать ДЗ", 2))
+
 print(st)
 
 
