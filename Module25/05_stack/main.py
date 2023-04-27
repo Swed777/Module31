@@ -5,28 +5,39 @@ class Stack:
         self.items = []
     def add_elem(self, item):
         self.items.append(item)
+
     def pop(self, index: int = -1):
         if len(self.items) == 0:
             return None
         return self.items.pop(index)
+    def __str__(self):
+        return f'{self.items}'
 
 
 class TaskManager:
+    def __init__(self, task : str, priority = 0):
+    # def new_task(self, task : str, priority : int):
+        self.task = {'task':priority}
+    def __str__(self):
+        return f'Задача: {self.task}, Приоритет: {self.priority}'
 
-    def new_task(self, task, priority):
-        pass
 
-
-manager = TaskManager()
+'''
 manager.new_task("сделать уборку", 4)
 manager.new_task("помыть посуду", 4)
 manager.new_task("отдохнуть", 1)
 manager.new_task("поесть", 2)
 manager.new_task("сдать ДЗ", 2)
-print(manager)
+'''
+st = Stack()
+st.add_elem({'Сделать уборку':5})
+print(st)
+
+
 # Проработать удаление дубликатов
 
-pass
+
+
 '''
 Задача 5. Стек
 Что нужно сделать
