@@ -6,16 +6,11 @@ class Stack:
     def add_elem(self, item : list):
         self.items.append(item)
 
-    def pop(self, index: int = -1):
-        if len(self.items) == 0:
-            return None
-        return self.items.pop(index)
     def __str__(self):
         return f'{self.items}'
 
-
 class TaskManager:
-    def __init__(self, task : str, priority = 0):
+    def __init__(self, task : str, priority: int = 0):
         self.task = ('task', priority)
     def __str__(self):
         return f'Задача: {self.task}, Приоритет: {self.priority}'
@@ -30,11 +25,7 @@ st.add_elem(("сдать ДЗ", 2))
 print(st)
 
 # Сделать сортировку
-
-# Проработать удаление дубликатов
-st.pop(2)
-print(st)
-
+print(sorted(st.items, key=lambda x: x[1]))
 
 '''
 Задача 5. Стек
