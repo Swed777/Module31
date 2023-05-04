@@ -5,7 +5,9 @@ class Stack:
         self.items = []
     def add_elem(self, item : list):
         self.items.append(item)
-
+    def pop(self, index : int):
+        removed = self.items.pop(index)
+        return removed
     def __str__(self):
         return f'{self.items}'
 
@@ -21,11 +23,18 @@ st.add_elem(("помыть посуду", 4))
 st.add_elem(("отдохнуть", 1))
 st.add_elem(("поесть", 2))
 st.add_elem(("сдать ДЗ", 2))
-
-print(st)
+# print(st)
+# st.pop(2)
+# print(st)
 
 # Сделать сортировку
-print(sorted(st.items, key=lambda x: x[1]))
+st_sort = sorted(st.items, key=lambda x: x[1])
+
+print('Результат:')
+for key, value in st_sort:
+    print(f'{value} - {key}')
+
+
 
 '''
 Задача 5. Стек
