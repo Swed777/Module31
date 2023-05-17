@@ -1,4 +1,3 @@
-# TODO здесь писать код
 import os
 
 
@@ -10,15 +9,12 @@ def get_file_list(dir: str) -> str:
                 yield os.path.join(root, i_file)
 
 
-def count_line(file_name):  # Собственно подсчет активных строк
+def count_line(file_name):
     with open(file_name, 'r') as file:
         local_count = 0
         for line in file:
-            # TODO:
-            #  Проверка неверная.
-            #  Нужно обрезать все пробельные с помощью метода .strip(), переопределив переменную line.
-            #  Затем проверять, если длина line больше 0 И not line.startswith('#'), то увеличивать local_count
-            if line != '\n' or not line.startswith('"') or not line.startswith('#'):
+            line = line.strip()
+            if len(line) > 0 and not line.startswith('#'):
                 local_count += 1
         print(f'{file_name} - {local_count} строк(и)')
 
