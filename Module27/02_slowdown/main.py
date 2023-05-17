@@ -1,16 +1,26 @@
 # TODO здесь писать код
-from typing import Callable
 import time
+import requests
 import functools
 
-def slow_func(func : Callable) -> int:
+def slow_func(func):
     @functools.wraps(func)
-    def wrapper(*args, **kwargs):
-        time.sleep(5)
-        result = func(*args, **kwargs)
+    def wrapper(**kwargs):
+        time.sleep(5)          # Перед выполнением функции сделаем задержку на 5 секунд
+        result = func(*kwargs)
         return result
     return wrapper()
 
+@slow_func
+def change_site(site : str) -> str:
+    response = requests.get(site)
+    print('Данные получены')
+    result = response.text
+    response.close()
+    return result
+
+test = change_site('http://alexgyver.ru')
+print(test)
 
 
 '''
