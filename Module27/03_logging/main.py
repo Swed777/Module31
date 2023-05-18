@@ -7,7 +7,7 @@ def logging(func):
             print(f'{func.__name__} - {func.__doc__}')
             func()
         except Exception as e:
-            e = f'{datetime.now().strftime("%d/%m/%Y %H:%M:%S")} - {func.__name__} - {e}\n' # время срабатывания и название функуии с ошибкой в
+            e = f'{datetime.now().strftime("%d/%m/%Y %H:%M:%S")} - {func.__name__} - {e}\n'   # время срабатывания и название функуии с ошибкой в
             with open('function_error.log', 'a+', encoding='utf-8') as fnc:
                 fnc.write(e)
             print(e)
