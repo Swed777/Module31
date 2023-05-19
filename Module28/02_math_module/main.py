@@ -1,6 +1,21 @@
 # TODO здесь писать код
+class MyMath:
 
-pass
+    # вычисление длины окружности,
+    # вычисление площади окружности,
+    # вычисление объёма куба,
+    # вычисление площади поверхности сферы.
+
+res_1 = MyMath.circle_len(radius=5)
+res_2 = MyMath.circle_sq(radius=6)
+res_3 = MyMath.cube_value(edge=6)
+res_4 = MyMath.sphere_area(radius=6)
+
+print(res_1)
+print(res_2)
+print(res_3)
+print(res_4)
+
 '''
 Задача 2. Математический модуль
 Что нужно сделать
