@@ -12,13 +12,18 @@ class Date():
 
     @classmethod
     def split_date(cls, date : str) -> None:
+        pass
 
     @classmethod
     def from_string(cls, date : str) -> 'Date':
-        return pass
+        return
+        pass
 
+    @classmethod
     def is_date_valid(cls, date : str) -> bool:
-        return pass
+        if
+        return
+        pass
 
 
 
