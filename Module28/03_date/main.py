@@ -11,13 +11,13 @@ class Date():
         return f'День: {self.day}, месяц: {self.month}, год: {self.year}'
 
     @classmethod
-    def _split_date(cls, date: str) -> bool:
+    def split_date(cls, date : str) -> None:
 
     @classmethod
-    def from_string(cls, date: str) -> 'Date':
+    def from_string(cls, date : str) -> 'Date':
         return pass
 
-    def is_date_valid():
+    def is_date_valid(cls, date : str) -> bool:
         return pass
 
 
