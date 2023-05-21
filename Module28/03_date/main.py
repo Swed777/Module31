@@ -1,4 +1,25 @@
 # TODO здесь писать код
+from datetime import date
+
+class Date():
+    def __init__(self, day : int = 0, month : int = 0, year : int = 0):
+        self.day = day
+        self.month = month
+        self.year = year
+
+    def __str__(self):
+        return f'День: {self.day}, месяц: {self.month}, год: {self.year}'
+
+    @classmethod
+    def _split_date(cls, date: str) -> bool:
+
+    @classmethod
+    def from_string(cls, date: str) -> 'Date':
+        return pass
+
+    def is_date_valid():
+        return pass
+
 
 
 '''
