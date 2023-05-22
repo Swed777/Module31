@@ -1,5 +1,4 @@
 # TODO здесь писать код
-from datetime import date
 
 class Date():
     def __init__(self, day : int = 0, month : int = 0, year : int = 0):
