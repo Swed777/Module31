@@ -15,20 +15,28 @@ class Date():
         lst_date = date.split('-')
         if len(lst_date) != 3:
             print('Неверный формат даты. \nИспользуйте дефис в качестве разделителя')
-        return lst_date
+        cls.day, cls.month, cls.year = map(int, lst_date)
+        # return lst_date
 
     @classmethod
     def is_date_valid(cls, date : str) -> bool:
-        date_valid = Date.split_date(date)
-        if 1 <= int(date_valid[0]) <= 31 and 1 <= int(date_valid[1]) and int(date_valid[2]) < 9999:
+        cls.split_date(date)
+        if 1 <= int(cls.day) <= 31 and 1 <= int(cls.month) and cls.year < 9999:
             return True
         else:
             return False
 
+        # date_valid = Date.split_date(date)
+        # if 1 <= int(date_valid[0]) <= 31 and 1 <= int(date_valid[1]) and int(date_valid[2]) < 9999:
+        #     return True
+        # else:
+        #     return False
+
     @classmethod
     def from_string(cls, date : str) -> 'Date':
-        return
-        pass
+        cls.split_date(date)
+        finish_date = cls(cls.day, cls.month, cls.year)
+        return finish_date
 
 
 date = Date.from_string('10-12-2077')
