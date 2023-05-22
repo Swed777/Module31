@@ -16,7 +16,6 @@ class Date():
         if len(lst_date) != 3:
             print('Неверный формат даты. \nИспользуйте дефис в качестве разделителя')
         cls.day, cls.month, cls.year = map(int, lst_date)
-        # return lst_date
 
     @classmethod
     def is_date_valid(cls, date : str) -> bool:
@@ -25,12 +24,6 @@ class Date():
             return True
         else:
             return False
-
-        # date_valid = Date.split_date(date)
-        # if 1 <= int(date_valid[0]) <= 31 and 1 <= int(date_valid[1]) and int(date_valid[2]) < 9999:
-        #     return True
-        # else:
-        #     return False
 
     @classmethod
     def from_string(cls, date : str) -> 'Date':
@@ -42,14 +35,7 @@ class Date():
 date = Date.from_string('10-12-2077')
 print(date)
 print(Date.is_date_valid('10-12-2077'))
-print(Date.is_date_valid('40-12-2077'))
-
-
-# my_date = '30-10-2020'
-# my_date_err = '30/10/2020'
-# test = Date.split_date(my_date)
-# print(test)
-# print(Date.is_date_valid('20-20-10000'))
+print(Date.is_date_valid('40-12-202020'))
 
 
 '''
