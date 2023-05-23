@@ -15,12 +15,9 @@ def check_permission(username : str) -> Callable:
                 else:
                     raise PermissionError
             except PermissionError:
-                print('PermissionError: У Вас недостаточно прав. Обратитесь к администратору')
+                print(f'PermissionError: У Вас недостаточно прав, чтобы выполнить функцию --> {func.__name__}. \nОбратитесь к администратору')
         return wrapper
     return check_permission_down
-
-# user_permissions = ['admin']
-# user_permissions_u = ['user']
 
 @check_permission('admin')
 # @check_permission('user_1')
