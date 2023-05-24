@@ -1,4 +1,5 @@
 # TODO здесь писать код
+
 from typing import Callable
 
 app = dict()
