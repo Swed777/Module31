@@ -5,6 +5,7 @@ def singleton(cls):
     def wrapped(*args, **kwargs):
         pass
 
+
 #_______________
 @singleton
 class Example:
