@@ -1,10 +1,15 @@
 # TODO здесь писать код
-# import functools
 
 def singleton(cls):
     def wrapped(*args, **kwargs):
-        pass
+        if cls.tmp is None:
+            instance = cls(*args, **kwargs)
+            cls.tmp = instance
+            return instance
+        return cls.tmp
 
+    cls.tmp = None
+    return wrapped
 
 #_______________
 @singleton
