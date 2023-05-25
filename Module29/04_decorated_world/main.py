@@ -25,6 +25,7 @@ def decorated_function(text: str, num: int) -> None:
 decorated_function("Юзер", 101)
 
 
+
 '''
 Задача 4. Весь мир — декоратор…
 Что нужно сделать
