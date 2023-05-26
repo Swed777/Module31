@@ -2,8 +2,15 @@
 import re
 from typing import List
 
+number_list = 'А578ВЕ777 ОР233787 К901МН666 СТ46599 СНИ2929П777 666АМР666'
 
-pass
+# priv_number : List[str] = re.split(' ', number_list)
+
+priv_number : List[str] = re.split(' ', number_list)
+print(priv_number)
+
+
+
 '''
 Задача 2. Регистрационные знаки
 Что нужно сделать
