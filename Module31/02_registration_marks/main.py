@@ -4,17 +4,9 @@ from typing import List
 
 number_str : str = 'А578ВЕ777 ОР233787 К901МН666 СТ46599 СНИ2929П777 666АМР666'
 
-# priv_number : List[str] = re.split(' ', number_str)
-# print(priv_number)
 
-
-priv_number : List[str]= re.findall(r'\w{2}[АВЕКМНОРСТУХ]\w+', number_str)
-print(priv_number)
-
-
-
-# priv_number_1 : List[str] = re.findall(r'\w+', priv_number)
-# print(priv_number_1)
+priv_number : List[str]= re.findall(r'\b[АВЕКМНОРСТУХ]\d{3}\w{2}\d{3}', number_str)
+print(f'Список номеров частных автомобилей: {priv_number}')
 
 
 
