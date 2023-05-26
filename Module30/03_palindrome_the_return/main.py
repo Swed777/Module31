@@ -1,6 +1,6 @@
 # TODO здесь писать код
 
-def can_be_poly(letter : str) -> bool:
+def can_be_poly(letters : str) -> bool:
     pass
 
 
