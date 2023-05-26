@@ -8,7 +8,7 @@ Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, v
 """
 # TODO здесь писать код
 
-my_text = re.split(r' ', text)
+my_text = re.findall(r'\w+', text)   # \w+  Любая цифра или буква (\W — все, кроме буквы или цифры) , а + убирает пробелы
 my_text_4 : List = list(filter(lambda x: len(x) == 4, my_text))
 
 print(my_text_4)
