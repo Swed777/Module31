@@ -6,11 +6,13 @@ names: List[str] = ["Vanes", "Alen", "Jana", "William", "Richards", "Joy"]
 numbers: List[int] = [22, 33, 10, 6894, 11, 2, 1]
 #_________________________________________________
 
-my_floats : List = list(map(lambda x : round(x ** 3, 3), floats))
+my_floats : List[float] = list(map(lambda x : round(x ** 3, 3), floats))
+my_names : List[str] = list(filter(lambda letter: len(letter) >=5, names))
 
 
 
 print('Задание 1:', my_floats)
+print('Задание 2:', my_names)
 
 '''
 Задача 1. Новые списки
