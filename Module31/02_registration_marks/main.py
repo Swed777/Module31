@@ -6,8 +6,13 @@ number_str : str = 'А578ВЕ777 ОР233787 К901МН666 СТ46599 СНИ2929П7
 
 
 priv_number : List[str]= re.findall(r'\b[АВЕКМНОРСТУХ]\d{3}\w{2}\d{3}', number_str)
-print(f'Список номеров частных автомобилей: {priv_number}')
+taxi_number : List[str] = re.findall(r'\b[АВЕКМНОРСТУХ]{2}\d{3}\d{2,3}', number_str)
 
+print('-'*65)
+print(f'Список номеров частных автомобилей: {priv_number}')
+print('-'*65)
+print(f'Список номеров такси:               {taxi_number}')
+print('-'*65)
 
 
 '''
