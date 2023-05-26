@@ -6,7 +6,11 @@ names: List[str] = ["Vanes", "Alen", "Jana", "William", "Richards", "Joy"]
 numbers: List[int] = [22, 33, 10, 6894, 11, 2, 1]
 #_________________________________________________
 
+my_floats : List = list(map(lambda x : round(x ** 3, 3), floats))
 
+
+
+print('Задание 1:', my_floats)
 
 '''
 Задача 1. Новые списки
