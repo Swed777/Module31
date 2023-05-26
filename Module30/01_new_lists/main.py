@@ -1,4 +1,5 @@
 # TODO здесь писать код
+from typing import List
 
 floats: List[float] = [12.3554, 4.02, 5.777, 2.12, 3.13, 4.44, 11.0001]
 names: List[str] = ["Vanes", "Alen", "Jana", "William", "Richards", "Joy"]
