@@ -8,7 +8,7 @@ pattern = r'\b[89]\d{9}'
 count = 0
 for i_tlf_num in tlf_orig:
     count += 1
-    if (re.findall(pattern, i_tlf_num)):
+    if (re.findall(pattern, i_tlf_num)) and len(i_tlf_num) == 10:
         print(f'{count} номер: всё в порядке {i_tlf_num}')
     else:
         print(f'{count} номер: не подходит   {i_tlf_num}')
