@@ -4,22 +4,25 @@ import json
 import re
 from typing import List
 
+# В данном случае запрос request.get заменен на загрзку сайта из файла html
+with open('examples.html', 'r') as f:
+    text = f.read()
+# По итогу вы так же получаете код сайта в виде одной строки
+
+
+pattern = r'<h3>(.*)</h3>'
+final : List[str] = re.findall(pattern, text)
+print(final)
+
+
+
+
+#_____________________
  # тренировка get запроса
 # req = requests.get('http://www.columbia.edu/~fdc/sample.html')
 # req1 = requests.get("https://swapi.dev/api/people/3/")
 # req_dict = json.loads(req1.text)
 # print(req_dict)
-
-# В данном случае запрос request.get заменен на загрзку сайта из файла html
-with open('examples.html', 'r') as f:
-    text = f.read()
-# По итогу вы так же получаете код сайта в виде одной строки
-# pattern = r'\b[h3][0-9][0-9A-Za-z]'
-
-pattern = r'<h3>\w+</h3>'
-
-final : List[str] = re.findall(pattern, text)
-print(final)
 
 '''
 Задача 5. Web scraping
