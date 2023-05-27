@@ -2,21 +2,16 @@
 import re
 from typing import List
 
-# def test_number(tlf, pattern):
-#     test = {re.findall(pattern, tlf) for i in tlf_orig}
-#     if test:
-#         yield f'всё в порядке {test}'
-#     else:
-#         yield f'не подходит {test}'
-
 tlf_orig : List[str] = ['9999999999', '999999-999', '99999x9999']
 pattern = r'\b[89]\d{9}'
 
+count = 0
 for i_tlf_num in tlf_orig:
+    count += 1
     if (re.findall(pattern, i_tlf_num)):
-        print('ОК', i_tlf_num)
+        print(f'{count} номер: всё в порядке {i_tlf_num}')
     else:
-        print('No', i_tlf_num)
+        print(f'{count} номер: не подходит   {i_tlf_num}')
 
 
 
