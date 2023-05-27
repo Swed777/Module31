@@ -10,7 +10,7 @@ with open('examples.html', 'r') as f:
 # По итогу вы так же получаете код сайта в виде одной строки
 
 
-pattern = r'<h3>(.*)</h3>'
+pattern = r'<h3>(.*)</h3>'      # (.*) - поиск всего содержимого между точкой входа и выхода
 final : List[str] = re.findall(pattern, text)
 print(final)
 
