@@ -12,14 +12,11 @@ from typing import List
 tlf_orig : List[str] = ['9999999999', '999999-999', '99999x9999']
 pattern = r'\b[89]\d{9}'
 
-test =  re.findall(r'\b[89]\d{9}', str(tlf_orig))
-print(test)
-
 for i_tlf_num in tlf_orig:
-    if (re.findall(r'\b[89]\d{9}', i_tlf_num)):
-        print('ОК')
+    if (re.findall(pattern, i_tlf_num)):
+        print('ОК', i_tlf_num)
     else:
-        print('No')
+        print('No', i_tlf_num)
 
 
 
