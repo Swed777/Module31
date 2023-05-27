@@ -2,12 +2,12 @@
 import re
 from typing import List
 
-def test_number(tlf, pattern):
-    test = {re.findall(pattern, tlf) for i in tlf_orig}
-    if test:
-        yield f'всё в порядке {test}'
-    else:
-        yield f'не подходит {test}'
+# def test_number(tlf, pattern):
+#     test = {re.findall(pattern, tlf) for i in tlf_orig}
+#     if test:
+#         yield f'всё в порядке {test}'
+#     else:
+#         yield f'не подходит {test}'
 
 tlf_orig : List[str] = ['9999999999', '999999-999', '99999x9999']
 pattern = r'\b[89]\d{9}'
@@ -15,7 +15,12 @@ pattern = r'\b[89]\d{9}'
 test =  re.findall(r'\b[89]\d{9}', str(tlf_orig))
 print(test)
 
-print(test_number(tlf_orig, pattern))
+for i_tlf_num in tlf_orig:
+    if (re.findall(r'\b[89]\d{9}', i_tlf_num)):
+        print('ОК')
+    else:
+        print('No')
+
 
 
 
