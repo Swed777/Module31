@@ -1,5 +1,5 @@
 # TODO здесь писать код
-from typing import List
+from typing import List, Dict
 import json
 
 diff_list : List[str] = ['services', 'staff', 'datetime']   # Список параметров для отслеживания
@@ -7,15 +7,17 @@ result = dict                                               # вывод в ко
 
 
 with open('json_old.json', 'r') as old_file:
-    o_file = json.load(old_file)
+    o_file : Dict = json.load(old_file)
     print(o_file)
 with open('json_new.json', 'r') as new_file:
     n_file = json.load(new_file)
     print(n_file)
 
+result = all(o_file.get(key) == n_file.get(key) for key in diff_list)
+print(result)
 
 with open('result.json', 'w') as result_file:
-    pass
+    json.dump(o_file, result_file, indent=4)
 
 '''
 Задача 6. Поиск разницы между двумя JSON-файлами (пример из реального тестового задания на должность Python-разработчика уровня Junior)
