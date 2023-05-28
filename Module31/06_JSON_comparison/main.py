@@ -8,7 +8,7 @@ result = dict                                               # вывод в ко
 
 with open('json_old.json', 'r') as old_file:
     o_file : Dict = json.load(old_file)
-    # print(o_file)
+    print(o_file)
 with open('json_new.json', 'r') as new_file:
     n_file = json.load(new_file)
     # print(n_file)
@@ -26,9 +26,14 @@ for key, o_items in o_file.items():
             print('Значение в старом файле', o_items)
             print('Значение в новом файле',  n_items)
 
+key_diff = 'services'
+if key_diff in o_file:
+    print(key_diff)
+else:
+    print('Не нашел')
 
-# result = all(o_file.get(key) == n_file.get(key) for key in diff_list)
-# print(str(result))
+if (o_file['data']['services']) != (n_file['data']['services']):
+    print('Вот искомое расхождение: ', n_file['data']['services'])
 
 
 # with open('result.json', 'w') as result_file:
