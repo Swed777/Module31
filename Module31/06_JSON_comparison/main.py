@@ -8,16 +8,31 @@ result = dict                                               # вывод в ко
 
 with open('json_old.json', 'r') as old_file:
     o_file : Dict = json.load(old_file)
-    print(o_file)
+    # print(o_file)
 with open('json_new.json', 'r') as new_file:
     n_file = json.load(new_file)
-    print(n_file)
+    # print(n_file)
 
-result = all(o_file.get(key) == n_file.get(key) for key in diff_list)
-print(result)
+if o_file == n_file:
+    print('Файлы идентичны')
+else:
+    print('Файлы разные, Ищем разницу в значениях:')
 
-with open('result.json', 'w') as result_file:
-    json.dump(o_file, result_file, indent=4)
+for key, o_items in o_file.items():
+    print('Ключ:', key)
+    # print('Значение:', o_items)
+    for key, n_items in n_file.items():
+        if o_items != n_items:
+            print('Значение в старом файле', o_items)
+            print('Значение в новом файле',  n_items)
+
+
+# result = all(o_file.get(key) == n_file.get(key) for key in diff_list)
+# print(str(result))
+
+
+# with open('result.json', 'w') as result_file:
+#     json.dump(o_file, result_file, indent=4)
 
 '''
 Задача 6. Поиск разницы между двумя JSON-файлами (пример из реального тестового задания на должность Python-разработчика уровня Junior)
