@@ -1,14 +1,26 @@
 # TODO здесь писать код
 from typing import List, Dict
 import json
-
 diff_list : List[str] = ['services', 'staff', 'datetime']   # Список параметров для отслеживания
-result = dict                                               # вывод в консоль - Словарь {параметр: новое_значение, ….}
+def find_param(file : Dict, diff_list : List):
+    for param in diff_list:
+        for key in file:
+            if param == key:
+                print(f'нашел ключ {param}, добавить его в темп')
+            else:
+                if not isinstance(key, dict):
+                    print('Поиск ключей закончен')
+                else:
+                    print(key)
+                    find_param(key, diff_list)
 
+
+
+result = dict                                               # вывод в консоль - Словарь {параметр: новое_значение, ….}
 
 with open('json_old.json', 'r') as old_file:
     o_file : Dict = json.load(old_file)
-    print(o_file)
+    # print(o_file)
 with open('json_new.json', 'r') as new_file:
     n_file = json.load(new_file)
     # print(n_file)
@@ -18,22 +30,22 @@ if o_file == n_file:
 else:
     print('Файлы разные, Ищем разницу в значениях:')
 
-for key, o_items in o_file.items():
-    print('Ключ:', key)
-    # print('Значение:', o_items)
-    for key, n_items in n_file.items():
-        if o_items != n_items:
-            print('Значение в старом файле', o_items)
-            print('Значение в новом файле',  n_items)
+# for key, o_items in o_file.items():
+#     print('Ключ:', key)
+#     # print('Значение:', o_items)
+#     for key, n_items in n_file.items():
+#         if o_items != n_items:
+#             # print('Значение в старом файле', o_items)
+#             # print('Значение в новом файле',  n_items)
+#             pass
 
-key_diff = 'services'
-if key_diff in o_file:
-    print(key_diff)
-else:
-    print('Не нашел')
+find_param(o_file, diff_list)
 
-if (o_file['data']['services']) != (n_file['data']['services']):
-    print('Вот искомое расхождение: ', n_file['data']['services'])
+
+
+
+
+
 
 # with open('result.json', 'w') as result_file:
 #     json.dump(o_file, result_file, indent=4)
