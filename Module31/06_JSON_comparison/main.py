@@ -35,7 +35,6 @@ else:
 if (o_file['data']['services']) != (n_file['data']['services']):
     print('Вот искомое расхождение: ', n_file['data']['services'])
 
-
 # with open('result.json', 'w') as result_file:
 #     json.dump(o_file, result_file, indent=4)
 
