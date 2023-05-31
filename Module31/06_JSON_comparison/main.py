@@ -4,10 +4,9 @@ import json
 diff_list : List[str] = ['services', 'staff', 'datetime']   # Список параметров для отслеживания
 def find_param(file : Dict, diff_list : List):
     # for param in diff_list:
-    for i_key,value in file.items():
+    for i_key, value in file.items():
         for param in diff_list:
             if param == i_key:
-                # print(f'нашел ключ {param}, добавить его в темп')
                 print('Словарь из дифлиста', i_key, value)
             else:
                 if not isinstance(value, dict):
@@ -39,8 +38,6 @@ print('*' * 43, end='\n')
 #             pass
 
 find_param(o_file, diff_list)
-
-
 
 
 
