@@ -3,22 +3,21 @@ from typing import List, Dict
 import json
 diff_list : List[str] = ['services', 'staff', 'datetime']   # Список параметров для отслеживания
 def find_param(file : Dict, diff_list : List):
-    for param in diff_list:
-        for i_key in file:
-            print(i_key)
+    # for param in diff_list:
+    for i_key,value in file.items():
+        for param in diff_list:
             if param == i_key:
-                print(f'нашел ключ {param}, добавить его в темп')
+                # print(f'нашел ключ {param}, добавить его в темп')
+                print('Словарь из дифлиста', i_key, value)
             else:
-                if not isinstance(i_key, dict):
-                    print(type(i_key))
-                    print('Поиск ключей закончен')
+                if not isinstance(value, dict):
+                    pass
                 else:
-                    print(i_key)
-                    find_param(i_key, diff_list)
+                    print('конечный елсе', i_key, value)
+                    find_param(value, diff_list)
 
 
-
-result = dict                                               # вывод в консоль - Словарь {параметр: новое_значение, ….}
+result = dict()                                               # вывод в консоль - Словарь {параметр: новое_значение, ….}
 
 with open('json_old.json', 'r') as old_file:
     o_file : Dict = json.load(old_file)
@@ -26,11 +25,9 @@ with open('json_old.json', 'r') as old_file:
 with open('json_new.json', 'r') as new_file:
     n_file = json.load(new_file)
     # print(n_file)
+print('Файлы идентичны' if o_file == n_file else  'Файлы разные, ищем разницу в значениях:')
+print('*' * 43, end='\n')
 
-if o_file == n_file:
-    print('Файлы идентичны')
-else:
-    print('Файлы разные, Ищем разницу в значениях:')
 
 # for key, o_items in o_file.items():
 #     print('Ключ:', key)
