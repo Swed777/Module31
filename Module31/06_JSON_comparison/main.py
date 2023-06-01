@@ -1,4 +1,50 @@
 # TODO здесь писать код
+from typing import List, Dict, Any
+import json
+
+diff_list: List[str] = ['services', 'staff', 'datetime']  # Список параметров для отслеживания
+class Find:
+    def __init__(self, json_f : Dict, result : Dict):
+        self.__json_f = json_f
+        self.result = result
+
+    def find_param(self, file: Dict, dif_list: List) -> Any:
+        for i_key, value in list(file.items()):
+            for param in dif_list:
+                if param == i_key:
+                    self.result[i_key] = value
+                elif isinstance(value, dict):
+                    self.find_param(value, dif_list)
+        return self.result
+
+with open('json_old.json', 'r') as old_file:
+    o_file = json.load(old_file)
+with open('json_new.json', 'r') as new_file:
+    n_file = json.load(new_file)
+
+res1 = Find(o_file, result={})
+res2 = Find(n_file, result={})
+x  = res1.find_param(o_file, diff_list)
+y = res2.find_param(n_file, diff_list)
+print(x)
+print(type(x))
+print(y)
+
+
+# for i in diff_list:
+#     print(list_o.get(i))
+#     print(list_n.get(i))
+#     if list_o.get(i) != list_n.get(i):
+#         print(list_n.get(i))
+
+# with open('result.json', 'w') as result_file:
+#     json.dump(o_file, result_file, indent=4)
+
+
+
+'''
+***********  Первоначальный резервный вариант  **************
+
 from typing import List, Dict
 import json
 result = dict()
@@ -27,15 +73,7 @@ list_o = find_param(o_file, diff_list)
 list_n = find_param(n_file, diff_list)
 print(list_o)
 print(list_n)
-#
-# for i in diff_list:
-#     print(list_o.get(i))
-#     print(list_n.get(i))
-#     if list_o.get(i) != list_n.get(i):
-#         print(list_n.get(i))
-
-# with open('result.json', 'w') as result_file:
-#     json.dump(o_file, result_file, indent=4)
+'''
 
 
 
