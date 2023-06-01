@@ -1,17 +1,23 @@
 # TODO здесь писать код
 from typing import List, Dict
 import json
-result = dict()
-diff_list: List[str] = ['services', 'staff', 'datetime']  # Список параметров для отслеживания
-def find_param(file : Dict, diff_list : List):
-    for i_key, value in file.items():
-        for param in diff_list:
-            if param == i_key:
-                result[i_key] = value
-            elif isinstance(value, dict):
-                find_param(value, diff_list)
-    return result
 
+class Find:
+    def __init__(self, result : Dict):
+        # self.json_f = json_f
+        # self.diff_l = diff_l
+        self.result = result
+
+    def find_param(self, file: Dict, diff_list: List):
+        for i_key, value in file.items():
+            for param in diff_list:
+                if param == i_key:
+                    self.result[i_key] = value
+                elif isinstance(value, dict):
+                    self.find_param(value, diff_list)
+        return self.result
+
+diff_list: List[str] = ['services', 'staff', 'datetime']  # Список параметров для отслеживания
 
 with open('json_old.json', 'r') as old_file:
     o_file : Dict = json.load(old_file)
@@ -19,14 +25,15 @@ with open('json_old.json', 'r') as old_file:
 with open('json_new.json', 'r') as new_file:
     n_file = json.load(new_file)
     # print(n_file)
-print('Файлы идентичны' if o_file == n_file else 'Файлы разные, ищем разницу в значениях:')
-print('*' * 43, end='\n')
+
+res1 = Find(o_file)
+res2 = Find(n_file)
+x = {res1.find_param(o_file, diff_list)}
+print(x)
+print(res1)
 
 
-list_o = find_param(o_file, diff_list)
-list_n = find_param(n_file, diff_list)
-print(list_o)
-print(list_n)
+
 #
 # for i in diff_list:
 #     print(list_o.get(i))
