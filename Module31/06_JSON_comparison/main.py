@@ -37,8 +37,8 @@ print(y)
 #     if list_o.get(i) != list_n.get(i):
 #         print(list_n.get(i))
 
-# with open('result.json', 'w') as result_file:
-#     json.dump(o_file, result_file, indent=4)
+with open('result.json', 'w') as result_file:
+    json.dump(y, result_file, indent=4)
 
 
 
