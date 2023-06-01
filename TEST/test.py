@@ -1,22 +1,18 @@
 # TODO здесь писать код
 from typing import List, Dict
 import json
-
+result = dict()
 diff_list: List[str] = ['services', 'staff', 'datetime']  # Список параметров для отслеживания
 def find_param(file : Dict, diff_list : List):
-	for i_key, value in file.items():
-		for param in diff_list:
-			if param == i_key:
-				diff_list.remove(param)
-				if isinstance(value, dict):
-					result[i_key] = value
-					print(result)
-			else:
-				if isinstance(value, dict):
-					find_param(value, diff_list)
+    for i_key, value in file.items():
+        for param in diff_list:
+            if param == i_key:
+                result[i_key] = value
+                diff_list.remove(param)
+            elif isinstance(value, dict):
+                find_param(value, diff_list)
+    return result
 
-
-result = dict()                                               # вывод в консоль - Словарь {параметр: новое_значение, ….}
 
 with open('json_old.json', 'r') as old_file:
     o_file : Dict = json.load(old_file)
@@ -27,7 +23,7 @@ with open('json_new.json', 'r') as new_file:
 print('Файлы идентичны' if o_file == n_file else 'Файлы разные, ищем разницу в значениях:')
 print('*' * 43, end='\n')
 
-find_param(o_file, diff_list)
+print(find_param(o_file, diff_list))
 
 
 # with open('result.json', 'w') as result_file:
