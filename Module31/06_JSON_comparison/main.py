@@ -24,7 +24,7 @@ with open('json_new.json', 'r') as new_file:
 
 res1 = Find(o_file, result={})
 res2 = Find(n_file, result={})
-x  = res1.find_param(o_file, diff_list)
+x = res1.find_param(o_file, diff_list)
 y = res2.find_param(n_file, diff_list)
 print(x)
 print(type(x))
