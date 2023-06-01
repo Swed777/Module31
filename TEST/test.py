@@ -6,16 +6,16 @@ class Find:
     def __init__(self, result : Dict):
         # self.json_f = json_f
         # self.diff_l = diff_l
-        self.result = result
+        self.__result = result
 
-    def find_param(self, file: Dict, diff_list: List):
-        for i_key, value in file.items():
-            for param in diff_list:
+    def find_param(self, file: Dict, dif_list: List):
+        for i_key, value in list(file.items()):
+            for param in dif_list:
                 if param == i_key:
-                    self.result[i_key] = value
+                    self.__result[i_key] = value
                 elif isinstance(value, dict):
-                    self.find_param(value, diff_list)
-        return self.result
+                    self.find_param(value, dif_list)
+        return self.__result
 
 diff_list: List[str] = ['services', 'staff', 'datetime']  # Список параметров для отслеживания
 
@@ -28,9 +28,10 @@ with open('json_new.json', 'r') as new_file:
 
 res1 = Find(o_file)
 res2 = Find(n_file)
-x = {res1.find_param(o_file, diff_list)}
+x = res1.find_param(o_file, diff_list)
+y = res2.find_param(n_file, diff_list)
 print(x)
-print(res1)
+print(y)
 
 
 
