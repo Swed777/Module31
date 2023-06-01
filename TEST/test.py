@@ -8,7 +8,6 @@ def find_param(file : Dict, diff_list : List):
         for param in diff_list:
             if param == i_key:
                 result[i_key] = value
-                diff_list.remove(param)
             elif isinstance(value, dict):
                 find_param(value, diff_list)
     return result
@@ -16,29 +15,27 @@ def find_param(file : Dict, diff_list : List):
 
 with open('json_old.json', 'r') as old_file:
     o_file : Dict = json.load(old_file)
-    print(o_file)
+    # print(o_file)
 with open('json_new.json', 'r') as new_file:
     n_file = json.load(new_file)
     # print(n_file)
 print('Файлы идентичны' if o_file == n_file else 'Файлы разные, ищем разницу в значениях:')
 print('*' * 43, end='\n')
 
-print(find_param(o_file, diff_list))
 
+list_o = find_param(o_file, diff_list)
+list_n = find_param(n_file, diff_list)
+print(list_o)
+print(list_n)
+#
+# for i in diff_list:
+#     print(list_o.get(i))
+#     print(list_n.get(i))
+#     if list_o.get(i) != list_n.get(i):
+#         print(list_n.get(i))
 
 # with open('result.json', 'w') as result_file:
 #     json.dump(o_file, result_file, indent=4)
-
-
-
-# for key, o_items in o_file.items():
-#     print('Ключ:', key)
-#     # print('Значение:', o_items)
-#     for key, n_items in n_file.items():
-#         if o_items != n_items:
-#             # print('Значение в старом файле', o_items)
-#             # print('Значение в новом файле',  n_items)
-#             pass
 
 
 

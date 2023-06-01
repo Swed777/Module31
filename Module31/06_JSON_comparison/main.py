@@ -22,6 +22,7 @@ with open('json_new.json', 'r') as new_file:
 print('Файлы идентичны' if o_file == n_file else 'Файлы разные, ищем разницу в значениях:')
 print('*' * 43, end='\n')
 
+
 list_o = find_param(o_file, diff_list)
 list_n = find_param(n_file, diff_list)
 print(list_o)
