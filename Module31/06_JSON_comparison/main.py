@@ -38,6 +38,9 @@ print(finish_different)
 with open('result.json', 'w') as result_file:               # Записываем в файл отличающиеся параметры
     json.dump(finish_different, result_file, indent=4)
 
+
+
+
 print(res2.__str__())
 print(res2.__doc__)
 
