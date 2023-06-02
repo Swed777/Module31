@@ -40,7 +40,6 @@ with open('result.json', 'w') as result_file:               # Записывае
 
 
 
-
 print(res2.__str__())
 print(res2.__doc__)
 
