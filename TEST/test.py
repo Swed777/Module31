@@ -1,66 +1,50 @@
 # TODO здесь писать код
-from typing import List, Dict
+import requests
 import json
-result = dict()
-diff_list: List[str] = ['services', 'staff', 'datetime']  # Список параметров для отслеживания
-def find_param(file : Dict, diff_list : List):
-    for i_key, value in file.items():
-        for param in diff_list:
-            if param == i_key:
-                result[i_key] = value
-            elif isinstance(value, dict):
-                find_param(value, diff_list)
-    return result
+import re
 
+'Тестирую'
 
-with open('json_old.json', 'r') as old_file:
-    o_file : Dict = json.load(old_file)
-    # print(o_file)
-with open('json_new.json', 'r') as new_file:
-    n_file = json.load(new_file)
-    # print(n_file)
-print('Файлы идентичны' if o_file == n_file else 'Файлы разные, ищем разницу в значениях:')
-print('*' * 43, end='\n')
+# war_api = requests.get('http://swapi.dev/api/planets/1/')
+# param = {'ship_name':'Millennium Falcon'}
+# war_api = requests.get('https://swapi.dev/api/people/')
 
+# war_api = requests.get("https://api.thedogapi.com/v1/breeds/1")
+# print(war_api.text)
+# print(war_api.content)
+# # print(war_api.headers)
+# war_api.headers.get('Content-Type')
+# print(war_api.json())
+# print(war_api.json())
+# for k,v in war_api.items():
+#     print('-->', v, end='\n')
 
-list_o = find_param(o_file, diff_list)
-list_n = find_param(n_file, diff_list)
-print(list_o)
-print(list_n)
-#
-# for i in diff_list:
-#     print(list_o.get(i))
-#     print(list_n.get(i))
-#     if list_o.get(i) != list_n.get(i):
-#         print(list_n.get(i))
-
-# with open('result.json', 'w') as result_file:
-#     json.dump(o_file, result_file, indent=4)
-
-
+api_key = "IxvocnRc69rLkVZUOrPg47UzMlTjghXdvSoHqzzi"
+query_params = {"api_key": api_key, "earth_date": "2020-07-01"}
+# nasa_api = requests.get('https://api.nasa.gov/')
+nasa_foto = requests.get("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos", params=query_params)
+print(nasa_foto.json())
+foto = nasa_foto.json()['photos'][5]['img_src']
+print(foto)
 
 '''
-Задача 6. Поиск разницы между двумя JSON-файлами (пример из реального тестового задания на должность Python-разработчика уровня Junior)
+Задача 3. May the force be with you
 Что нужно сделать
-Найдите различия между двумя JSON-файлами. Если различающиеся параметры входят в diff_list, выведите различие. Иными словами, вам нужно отловить изменение определённых параметров и вывести значение: что изменилось и на что. Набор ключей в обоих файлах идентичный, различаются лишь значения.
+Фанаты «Звёздных войн» (Star Wars) написали API по своей любимой вселенной. Ссылка на документацию: Documentation.
 
-Напишите программу, которая:
+Внимательно изучите документацию этого API и напишите программу, которая выводит на экран (и в JSON-файл) информацию о пилотах легендарного корабля Millennium Falcon.
 
-загружает данные из двух предложенных JSON-файлов (находятся в репозитории);
-выполняет сравнение параметров, указанных в diff_list;
-формирует результат в виде словаря;
-записывает словарь в JSON-файл с названием result.json.
-Исходные данные
+Информация о корабле должна содержать следующие пункты:
 
-Файлы:
+название,
+максимальная скорость,
+класс,
+список пилотов.
+Внутри списка о каждом пилоте должна быть следующая информация:
 
-json_old.json,
-json_new.json.
-Список параметров для отслеживания (можно сформировать инпутом или ввести вручную):
-
-diff_list = [‘services’, ‘staff’, ‘datetime’]
-
-Формат итогового словаря с результатом:
-
-Словарь {параметр: новое_значение, ….}
-'''
+имя,
+рост,
+вес,
+родная планета,
+ссылка на информацию о родной планете.
+Пример вывода информации по кораблю X-wing в консоль:'''
