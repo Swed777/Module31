@@ -4,10 +4,21 @@ import json
 import re
 
 headers = {'X-Frame-Options': "<my-request-id>"}
-
-api_root = requests.get('https://swapi.dev/api/').json()
-api_end = requests.get('https://swapi.dev/api/people/').json()
 api = requests.get('https://swapi.dev/api/').headers
+api_root = requests.get('https://swapi.dev/api/').json()
+
+api_ppl = requests.get('https://swapi.dev/api/people/').json()
+api_shp = requests.get('https://swapi.dev/api/starships/').json()
+api_shp_lst = api_shp['results']
+
+
+print(api_ppl['results'])
+# print(api_shp_lst[0]['name'])
+
+shp_data = [i for i in api_shp_lst if i['name'] == "Millennium Falcon"]
+print(shp_data)
+
+
 
 # api_in = api_end.headers.get('Content-Type')
 
@@ -25,13 +36,15 @@ api = requests.get('https://swapi.dev/api/').headers
 #     print('-->', v, end='\n')
 
 
-
 # print(api_root)
 # print(api_end)
-print(api)
+# print(api)
 
-with open('result_ws.json', 'w') as result_file_ws:               # Записываем в файл отличающиеся параметры
-    json.dump(api_end, result_file_ws, indent=4)
+with open('result_ppl.json', 'w') as result_file_ppl:               # Записываем в файл отличающиеся параметры
+    json.dump(api_ppl, result_file_ppl, indent=4)
+
+with open('result_shp.json', 'w') as result_file_shp:               # Записываем в файл отличающиеся параметры
+    json.dump(shp_data, result_file_shp, indent=4)
 
 with open('result_api_root.json', 'w') as api_root_f:               # Записываем в файл отличающиеся параметры
     json.dump(api_root, api_root_f, indent=4)
