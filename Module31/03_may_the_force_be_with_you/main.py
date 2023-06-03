@@ -3,13 +3,18 @@ import requests
 import json
 import re
 
-'Тестирую'
+headers = {'X-Frame-Options': "<my-request-id>"}
+
+api_root = requests.get('https://swapi.dev/api/').json()
+api_end = requests.get('https://swapi.dev/api/people/').json()
+api = requests.get('https://swapi.dev/api/').headers
+
+# api_in = api_end.headers.get('Content-Type')
 
 # war_api = requests.get('http://swapi.dev/api/planets/1/')
 # param = {'ship_name':'Millennium Falcon'}
 # war_api = requests.get('https://swapi.dev/api/people/')
 
-# war_api = requests.get("https://api.thedogapi.com/v1/breeds/1")
 # print(war_api.text)
 # print(war_api.content)
 # # print(war_api.headers)
@@ -19,13 +24,26 @@ import re
 # for k,v in war_api.items():
 #     print('-->', v, end='\n')
 
-api_key = "IxvocnRc69rLkVZUOrPg47UzMlTjghXdvSoHqzzi"
-query_params = {"api_key": api_key, "earth_date": "2020-07-01"}
-# nasa_api = requests.get('https://api.nasa.gov/')
-nasa_foto = requests.get("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos", params=query_params)
-print(nasa_foto.json())
-foto = nasa_foto.json()['photos'][5]['img_src']
-print(foto)
+
+
+# print(api_root)
+# print(api_end)
+print(api)
+
+with open('result_ws.json', 'w') as result_file_ws:               # Записываем в файл отличающиеся параметры
+    json.dump(api_end, result_file_ws, indent=4)
+
+with open('result_api_root.json', 'w') as api_root_f:               # Записываем в файл отличающиеся параметры
+    json.dump(api_root, api_root_f, indent=4)
+
+
+# api_key = "IxvocnRc69rLkVZUOrPg47UzMlTjghXdvSoHqzzi"
+# query_params = {"api_key": api_key, "earth_date": "2020-07-01"}
+# # nasa_api = requests.get('https://api.nasa.gov/')
+# nasa_foto = requests.get("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos", params=query_params)
+# print(nasa_foto.json())
+# foto = nasa_foto.json()['photos'][5]['img_src']
+# print(foto)
 
 '''
 Задача 3. May the force be with you
