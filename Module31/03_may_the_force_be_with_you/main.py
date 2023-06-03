@@ -16,6 +16,7 @@ print(api_ppl['results'])
 # print(api_shp_lst[0]['name'])
 
 shp_data = [i for i in api_shp_lst if i['name'] == "Millennium Falcon"]
+####### Проработать вывод информации через фильтр
 print(shp_data)
 
 
@@ -40,23 +41,17 @@ print(shp_data)
 # print(api_end)
 # print(api)
 
-with open('result_ppl.json', 'w') as result_file_ppl:               # Записываем в файл отличающиеся параметры
+with open('result_ppl.json', 'w') as result_file_ppl:               # Записываем в файл списки пилотов
     json.dump(api_ppl, result_file_ppl, indent=4)
 
-with open('result_shp.json', 'w') as result_file_shp:               # Записываем в файл отличающиеся параметры
+with open('result_shp.json', 'w') as result_file_shp:               # Записываем в файл данные корабля
     json.dump(shp_data, result_file_shp, indent=4)
 
-with open('result_api_root.json', 'w') as api_root_f:               # Записываем в файл отличающиеся параметры
+with open('result_api_root.json', 'w') as api_root_f:               # Записываем в файл корневой API
     json.dump(api_root, api_root_f, indent=4)
 
 
-# api_key = "IxvocnRc69rLkVZUOrPg47UzMlTjghXdvSoHqzzi"
-# query_params = {"api_key": api_key, "earth_date": "2020-07-01"}
-# # nasa_api = requests.get('https://api.nasa.gov/')
-# nasa_foto = requests.get("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos", params=query_params)
-# print(nasa_foto.json())
-# foto = nasa_foto.json()['photos'][5]['img_src']
-# print(foto)
+
 
 '''
 Задача 3. May the force be with you
@@ -79,3 +74,12 @@ with open('result_api_root.json', 'w') as api_root_f:               # Запис
 родная планета,
 ссылка на информацию о родной планете.
 Пример вывода информации по кораблю X-wing в консоль:'''
+
+# Запрос данных с сайта, используюшего авторизацию (по ключу) - для примера
+# api_key = "IxvocnRc69rLkVZUOrPg47UzMlTjghXdvSoHqzzi"
+# query_params = {"api_key": api_key, "earth_date": "2020-07-01"}
+# # nasa_api = requests.get('https://api.nasa.gov/')
+# nasa_foto = requests.get("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos", params=query_params)
+# print(nasa_foto.json())
+# foto = nasa_foto.json()['photos'][5]['img_src']
+# print(foto)
