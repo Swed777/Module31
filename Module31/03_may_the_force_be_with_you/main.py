@@ -1,54 +1,58 @@
 # TODO здесь писать код
 import requests
 import json
-import re
+from typing import List, Dict
 
-headers = {'X-Frame-Options': "<my-request-id>"}
+need_list_shp : List = ['name', 'max_atmosphering_speed', 'starship_class', 'pilots']  # Список значений, которые нужно внести в итоговый словарь
+final_dict = {}
+
+
+#____________ Не нужно для программы
 api = requests.get('https://swapi.dev/api/').headers
 api_root = requests.get('https://swapi.dev/api/').json()
 
-api_ppl = requests.get('https://swapi.dev/api/people/').json()
+# _____________________________________
 api_shp = requests.get('https://swapi.dev/api/starships/').json()
+api_ppl = requests.get('https://swapi.dev/api/people/').json()
+
 api_shp_lst = api_shp['results']
+# shp_data : List = [i for i in api_shp_lst if i['name'] == "Millennium Falcon"] # Формируем список всех значений корабля
+shp_data : List = [i for i in api_shp['results'] if i['name'] == "Millennium Falcon"] # Формируем список всех значений корабля
+shp_data_mil : Dict = shp_data[0]                                              # и берем из него первое значение 'name' в виде словаря
 
 
-print(api_ppl['results'])
-# print(api_shp_lst[0]['name'])
-
-shp_data = [i for i in api_shp_lst if i['name'] == "Millennium Falcon"]
-####### Проработать вывод информации через фильтр
-print(shp_data)
+for k,v in shp_data_mil.items():
+    for i in need_list_shp:
+        if k == i:
+            print(k, '->', v)
 
 
 
-# api_in = api_end.headers.get('Content-Type')
 
-# war_api = requests.get('http://swapi.dev/api/planets/1/')
-# param = {'ship_name':'Millennium Falcon'}
-# war_api = requests.get('https://swapi.dev/api/people/')
+# shp_data_plts = shp_data('pilots')
+# print(shp_data_plts)
 
-# print(war_api.text)
-# print(war_api.content)
-# # print(war_api.headers)
-# war_api.headers.get('Content-Type')
-# print(war_api.json())
-# print(war_api.json())
-# for k,v in war_api.items():
-#     print('-->', v, end='\n')
+if 'pilots' in shp_data:
+    print('*************')
 
 
-# print(api_root)
-# print(api_end)
-# print(api)
 
-with open('result_ppl.json', 'w') as result_file_ppl:               # Записываем в файл списки пилотов
-    json.dump(api_ppl, result_file_ppl, indent=4)
 
-with open('result_shp.json', 'w') as result_file_shp:               # Записываем в файл данные корабля
-    json.dump(shp_data, result_file_shp, indent=4)
+# Вывод в файлы
+# with open('result_ppl.json', 'w') as result_file_ppl:               # Записываем в файл списки пилотов
+#     json.dump(api_ppl, result_file_ppl, indent=4)
+#
+# with open('result_shp.json', 'w') as result_file_shp:               # Записываем в файл данные корабля
+#     json.dump(shp_data, result_file_shp, indent=4)
+#
+# with open('result_api_root.json', 'w') as api_root_f:               # Записываем в файл корневой API
+#     json.dump(api_root, api_root_f, indent=4)
 
-with open('result_api_root.json', 'w') as api_root_f:               # Записываем в файл корневой API
-    json.dump(api_root, api_root_f, indent=4)
+
+
+
+
+
 
 
 
@@ -75,11 +79,3 @@ with open('result_api_root.json', 'w') as api_root_f:               # Запис
 ссылка на информацию о родной планете.
 Пример вывода информации по кораблю X-wing в консоль:'''
 
-# Запрос данных с сайта, используюшего авторизацию (по ключу) - для примера
-# api_key = "IxvocnRc69rLkVZUOrPg47UzMlTjghXdvSoHqzzi"
-# query_params = {"api_key": api_key, "earth_date": "2020-07-01"}
-# # nasa_api = requests.get('https://api.nasa.gov/')
-# nasa_foto = requests.get("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos", params=query_params)
-# print(nasa_foto.json())
-# foto = nasa_foto.json()['photos'][5]['img_src']
-# print(foto)
