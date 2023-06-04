@@ -1,33 +1,47 @@
 # TODO здесь писать код
 import requests
 import json
-from typing import List, Dict
+from typing import List, Dict, Callable
 
 need_list_shp : List = ['name', 'max_atmosphering_speed', 'starship_class', 'pilots']  # Список значений, которые нужно внести в итоговый словарь
-need_list_plts: List = ['name', 'height', 'mass', 'homeworld', 'homeworld_url']
-# final_dict = {}
+need_list_plts: List = ['name', 'height', 'mass', 'homeworld']
+final_pltMil_dict = {}
 
 #____________ Не нужно для программы
-# api = requests.get('https://swapi.dev/api/').headers
-# api_root = requests.get('https://swapi.dev/api/').json()
-# _____________________________________
 # api_shp = requests.get('https://swapi.dev/api/starships/').json()
 # api_ppl = requests.get('https://swapi.dev/api/people/').json()
 
 #_________________________________________
-api_ships = requests.get('https://swapi.dev/api/starships/?search=Millennium').json()       # вариант get запроса через поисковый запрос
-x = api_ships['results'][0]
-final_shpMil_dict = ( { k:v for i in need_list_shp for (k,v) in x.items() if k == i } )
-print(final_shpMil_dict)
+api_ships : Dict = requests.get('https://swapi.dev/api/starships/?search=Millennium').json()       # вариант get запроса через поисковый запрос
+sh = api_ships['results'][0]                                                                        # Словарь с описанием ключей и значений корабля Millenium
+final_shpMil_dict = ( { k:v for i in need_list_shp for (k,v) in sh.items() if k == i } )            # Словарь, включающий параметры корабля, заданноые в условии
+print(json.dumps(final_shpMil_dict, indent=4))
 
 
+#_______________________________
+pilots_lst_url = final_shpMil_dict['pilots']                                                        # Список пилотов корабля Millenium
+# print(json.dumps(pilots_lst_url, indent=4))
+pilots = []
+for i_plt in pilots_lst_url:
+    plt = requests.get(i_plt).json()
+    for i in need_list_plts:
+        final_pltMil_dict[i] = plt[i]
+    pilots.append(final_pltMil_dict)
+print(json.dumps(pilots, indent=4))
+
+
+
+
+
+    # print(requests.get(i_plt).json())
+    # print(json.dumps(api_plts_mil, indent=4))
 
 
 
 
 # # Вывод в файлы
-# with open('result_ppl.json', 'w') as result_file_ppl:               # Записываем в файл списки пилотов
-#     json.dump(api_ppl, result_file_ppl, indent=4)
+with open('result_plts.json', 'w') as result_file_plts:               # Записываем в файл списки пилотов
+    json.dump(final_pltMil_dict, result_file_plts, indent=4)
 #
 with open('result_shp.json', 'w') as result_file_shp:               # Записываем в файл данные корабля
      json.dump(final_shpMil_dict, result_file_shp, indent=4)
@@ -37,7 +51,9 @@ with open('result_shp.json', 'w') as result_file_shp:               # Запис
 
 
 
-
+# xd = requests.get('https://swapi.dev/api/people/?search="https://swapi.dev/api/planet/14/"&people=31').json()
+# xd = requests.get('https://swapi.dev/api/people/31/?search="planet/33/"').json()
+# print('\n', xd)
 
 
 
