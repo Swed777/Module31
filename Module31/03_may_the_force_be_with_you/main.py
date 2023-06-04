@@ -4,46 +4,33 @@ import json
 from typing import List, Dict
 
 need_list_shp : List = ['name', 'max_atmosphering_speed', 'starship_class', 'pilots']  # Список значений, которые нужно внести в итоговый словарь
-final_dict = {}
-
+need_list_plts: List = ['name', 'height', 'mass', 'homeworld', 'homeworld_url']
+# final_dict = {}
 
 #____________ Не нужно для программы
-api = requests.get('https://swapi.dev/api/').headers
-api_root = requests.get('https://swapi.dev/api/').json()
-
+# api = requests.get('https://swapi.dev/api/').headers
+# api_root = requests.get('https://swapi.dev/api/').json()
 # _____________________________________
-api_shp = requests.get('https://swapi.dev/api/starships/').json()
-api_ppl = requests.get('https://swapi.dev/api/people/').json()
+# api_shp = requests.get('https://swapi.dev/api/starships/').json()
+# api_ppl = requests.get('https://swapi.dev/api/people/').json()
 
-api_shp_lst = api_shp['results']
-# shp_data : List = [i for i in api_shp_lst if i['name'] == "Millennium Falcon"] # Формируем список всех значений корабля
-shp_data : List = [i for i in api_shp['results'] if i['name'] == "Millennium Falcon"] # Формируем список всех значений корабля
-shp_data_mil : Dict = shp_data[0]                                              # и берем из него первое значение 'name' в виде словаря
-
-
-for k,v in shp_data_mil.items():
-    for i in need_list_shp:
-        if k == i:
-            print(k, '->', v)
+#_________________________________________
+api_ships = requests.get('https://swapi.dev/api/starships/?search=Millennium').json()       # вариант get запроса через поисковый запрос
+x = api_ships['results'][0]
+final_shpMil_dict = ( { k:v for i in need_list_shp for (k,v) in x.items() if k == i } )
+print(final_shpMil_dict)
 
 
 
 
-# shp_data_plts = shp_data('pilots')
-# print(shp_data_plts)
-
-if 'pilots' in shp_data:
-    print('*************')
 
 
-
-
-# Вывод в файлы
+# # Вывод в файлы
 # with open('result_ppl.json', 'w') as result_file_ppl:               # Записываем в файл списки пилотов
 #     json.dump(api_ppl, result_file_ppl, indent=4)
 #
-# with open('result_shp.json', 'w') as result_file_shp:               # Записываем в файл данные корабля
-#     json.dump(shp_data, result_file_shp, indent=4)
+with open('result_shp.json', 'w') as result_file_shp:               # Записываем в файл данные корабля
+     json.dump(final_shpMil_dict, result_file_shp, indent=4)
 #
 # with open('result_api_root.json', 'w') as api_root_f:               # Записываем в файл корневой API
 #     json.dump(api_root, api_root_f, indent=4)
