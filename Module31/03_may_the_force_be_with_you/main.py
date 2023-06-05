@@ -15,33 +15,36 @@ final_pltMil_dict = {}
 api_ships : Dict = requests.get('https://swapi.dev/api/starships/?search=Millennium').json()       # вариант get запроса через поисковый запрос
 sh = api_ships['results'][0]                                                                        # Словарь с описанием ключей и значений корабля Millenium
 final_shpMil_dict = ( { k:v for i in need_list_shp for (k,v) in sh.items() if k == i } )            # Словарь, включающий параметры корабля, заданноые в условии
-print(json.dumps(final_shpMil_dict, indent=4))
+# print(json.dumps(final_shpMil_dict, indent=4))
 
 
 #_______________________________
 pilots_lst_url = final_shpMil_dict['pilots']                                                        # Список пилотов корабля Millenium
 # print(json.dumps(pilots_lst_url, indent=4))
 pilots = []
+temp = {}
 for i_plt in pilots_lst_url:
     plt = requests.get(i_plt).json()
     for i in need_list_plts:
-        final_pltMil_dict[i] = plt[i]
-    pilots.append(final_pltMil_dict)
-print(json.dumps(pilots, indent=4))
+        temp[i] = plt[i]
+    pilots.append(temp)
+final_shpMil_dict['pilots'] = pilots
+
+print(json.dumps(final_shpMil_dict, indent=4))
 
 
 
 
 
-    # print(requests.get(i_plt).json())
-    # print(json.dumps(api_plts_mil, indent=4))
+# print(requests.get(i_plt).json())
+# print(json.dumps(api_plts_mil, indent=4))
 
 
 
 
 # # Вывод в файлы
 with open('result_plts.json', 'w') as result_file_plts:               # Записываем в файл списки пилотов
-    json.dump(final_pltMil_dict, result_file_plts, indent=4)
+    json.dump(pilots, result_file_plts, indent=4)
 #
 with open('result_shp.json', 'w') as result_file_shp:               # Записываем в файл данные корабля
      json.dump(final_shpMil_dict, result_file_shp, indent=4)
