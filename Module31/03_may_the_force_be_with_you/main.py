@@ -3,24 +3,17 @@ import requests
 import json
 from typing import List, Dict, Callable
 
-need_list_shp : List = ['name', 'max_atmosphering_speed', 'starship_class', 'pilots']  # Список значений, которые нужно внести в итоговый словарь
-need_list_plts: List = ['name', 'height', 'mass', 'homeworld']
+need_list_shp : List = ['name', 'max_atmosphering_speed', 'starship_class', 'pilots']           # Список значений корабля, которые нужно внести в итоговый словарь
+need_list_plts: List = ['name', 'height', 'mass', 'homeworld']                                  # Список значений пилотов, которые нужно внести в итоговый словарь
 final_pltMil_dict = {}
 
-#____________ Не нужно для программы
-# api_shp = requests.get('https://swapi.dev/api/starships/').json()
-# api_ppl = requests.get('https://swapi.dev/api/people/').json()
-
 #_________________________________________
-api_ships : Dict = requests.get('https://swapi.dev/api/starships/?search=Millennium').json()       # вариант get запроса через поисковый запрос
+api_ships : Dict = requests.get('https://swapi.dev/api/starships/?search=Millennium').json()       # вариант get запроса - через поисковый запрос по имени корабля
 sh = api_ships['results'][0]                                                                        # Словарь с описанием ключей и значений корабля Millenium
 final_shpMil_dict = ( { k:v for i in need_list_shp for (k,v) in sh.items() if k == i } )            # Словарь, включающий параметры корабля, заданноые в условии
-# print(json.dumps(final_shpMil_dict, indent=4))
-
 
 #_______________________________
 pilots_lst_url = final_shpMil_dict['pilots']                                                        # Список пилотов корабля Millenium
-# print(json.dumps(pilots_lst_url, indent=4))
 pilots = []
 temp = {}
 for i_plt in pilots_lst_url:
@@ -28,9 +21,11 @@ for i_plt in pilots_lst_url:
     for i in need_list_plts:
         temp[i] = plt[i]
     pilots.append(temp)
+    temp={}
+print(pilots)
 final_shpMil_dict['pilots'] = pilots
 
-print(json.dumps(final_shpMil_dict, indent=4))
+# print(json.dumps(final_shpMil_dict, indent=4))
 
 
 
@@ -54,9 +49,10 @@ with open('result_shp.json', 'w') as result_file_shp:               # Запис
 
 
 
-# xd = requests.get('https://swapi.dev/api/people/?search="https://swapi.dev/api/planet/14/"&people=31').json()
-# xd = requests.get('https://swapi.dev/api/people/31/?search="planet/33/"').json()
-# print('\n', xd)
+#
+# parametr = {"homeworld": "https://swapi.dev/api/planets/33/"}
+# test = requests.get('https://swapi.dev/api/people/', params=parametr).json()
+# print('\n', test)
 
 
 
