@@ -25,27 +25,11 @@ for i_plt in pilots_lst_url:
     temp={}
 final_shpMil_dict['pilots'] = pilots
 
+
 print(json.dumps(final_shpMil_dict, indent=4))
 
-
-# # Вывод в файлы
-# with open('result_plts.json', 'w') as result_file_plts:               # Записываем в файл списки пилотов
-#     json.dump(pilots, result_file_plts, indent=4)
-#
 with open('result_shp.json', 'w') as result_file_shp:               # Записываем в файл данные корабля
      json.dump(final_shpMil_dict, result_file_shp, indent=4)
-#
-# with open('result_api_root.json', 'w') as api_root_f:               # Записываем в файл корневой API
-#     json.dump(api_root, api_root_f, indent=4)
-
-
-#
-# print('________Ищем имя конкретной планеты___________')
-# # parametr = {"name": "https://swapi.dev/api/planets/30/"}
-# homeworld_name = requests.get('https://swapi.dev/api/planets/33/').json()['name']
-# print('\n', homeworld_name)
-
-
 
 
 
